@@ -3,6 +3,10 @@ rust:
   - stable
   - beta
   - nightly
+addons:
+  apt:
+    packages:
+    - sdl2-dev
 matrix:
   allow_failures:
     - rust: nightly
