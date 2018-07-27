@@ -37,7 +37,8 @@ fn main() -> Result<(), String> {
         Rect::new(110, 145, 32, 30),
     ];
     let robot_animation_speed = 0.9;
-    let robot_center = Point::new(160, 120);
+    let mut robot_center = Point::new(160, 120);
+    let mut face_left = false;
 
     let fps = 60;
     let mut running = true;
@@ -46,6 +47,14 @@ fn main() -> Result<(), String> {
             match event {
                 Event::Quit {..} | Event::KeyDown {keycode: Some(Keycode::Escape), ..} => {
                     running = false;
+                },
+                Event::KeyDown {keycode: Some(Keycode::Right), ..} => {
+                    robot_center = robot_center.offset(3, 0);
+                    face_left = false;
+                },
+                Event::KeyDown {keycode: Some(Keycode::Left), ..} => {
+                    robot_center = robot_center.offset(-3, 0);
+                    face_left = true;
                 },
                 _ => {}
             }
@@ -64,7 +73,7 @@ fn main() -> Result<(), String> {
 
         canvas.clear();
         // copy the frame to the canvas
-        canvas.copy_ex(&robot_texture, Some(robot_source_rect), Some(robot_dest_rect), 0.0, None, false, false)?;
+        canvas.copy_ex(&robot_texture, Some(robot_source_rect), Some(robot_dest_rect), 0.0, None, face_left, false)?;
         canvas.present();
 
         std::thread::sleep(Duration::from_millis(100));
