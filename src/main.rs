@@ -37,7 +37,8 @@ fn main() -> Result<(), String> {
         Rect::new(110, 145, 32, 30),
     ];
     let robot_animation_speed = 0.9;
-    let mut robot_center = Point::new(160, 120);
+    let canvas_size = canvas.output_size()?;
+    let mut robot_center = Point::new(canvas_size.0 as i32 / 2, canvas_size.1 as i32 / 2);
     let mut face_left = false;
 
     let fps = 60;
