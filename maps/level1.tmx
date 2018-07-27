@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="20" tileheight="20" infinite="1" nextobjectid="1">
+ <tileset firstgid="1" name="Platformer" tilewidth="20" tileheight="61" tilecount="172" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="172">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/box.png"/>
+  </tile>
+  <tile id="173">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxAlt.png"/>
+  </tile>
+  <tile id="174">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxCoin.png"/>
+  </tile>
+  <tile id="175">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxCoinAlt.png"/>
+  </tile>
+  <tile id="176">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxCoinAlt_disabled.png"/>
+  </tile>
+  <tile id="177">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxCoin_disabled.png"/>
+  </tile>
+  <tile id="178">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxEmpty.png"/>
+  </tile>
+  <tile id="179">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxExplosive.png"/>
+  </tile>
+  <tile id="180">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxExplosiveAlt.png"/>
+  </tile>
+  <tile id="181">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxExplosive_disabled.png"/>
+  </tile>
+  <tile id="182">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxItem.png"/>
+  </tile>
+  <tile id="183">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxItemAlt.png"/>
+  </tile>
+  <tile id="184">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxItemAlt_disabled.png"/>
+  </tile>
+  <tile id="185">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxItem_disabled.png"/>
+  </tile>
+  <tile id="186">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/boxWarning.png"/>
+  </tile>
+  <tile id="187">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/brickWall.png"/>
+  </tile>
+  <tile id="188">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/bridge.png"/>
+  </tile>
+  <tile id="189">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/bridgeLogs.png"/>
+  </tile>
+  <tile id="190">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castle.png"/>
+  </tile>
+  <tile id="191">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleCenter.png"/>
+  </tile>
+  <tile id="192">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleCenter_rounded.png"/>
+  </tile>
+  <tile id="193">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleCliffLeft.png"/>
+  </tile>
+  <tile id="194">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleCliffLeftAlt.png"/>
+  </tile>
+  <tile id="195">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleCliffRight.png"/>
+  </tile>
+  <tile id="196">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleCliffRightAlt.png"/>
+  </tile>
+  <tile id="197">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHalf.png"/>
+  </tile>
+  <tile id="198">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHalfLeft.png"/>
+  </tile>
+  <tile id="199">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHalfMid.png"/>
+  </tile>
+  <tile id="200">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHalfRight.png"/>
+  </tile>
+  <tile id="201">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHillLeft.png"/>
+  </tile>
+  <tile id="202">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHillLeft2.png"/>
+  </tile>
+  <tile id="203">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHillRight.png"/>
+  </tile>
+  <tile id="204">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleHillRight2.png"/>
+  </tile>
+  <tile id="205">
+   <image width="5" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleLedgeLeft.png"/>
+  </tile>
+  <tile id="206">
+   <image width="5" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleLedgeRight.png"/>
+  </tile>
+  <tile id="207">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleLeft.png"/>
+  </tile>
+  <tile id="208">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleMid.png"/>
+  </tile>
+  <tile id="209">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/castleRight.png"/>
+  </tile>
+  <tile id="210">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirt.png"/>
+  </tile>
+  <tile id="211">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtCenter.png"/>
+  </tile>
+  <tile id="212">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtCenter_rounded.png"/>
+  </tile>
+  <tile id="213">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtCliffLeft.png"/>
+  </tile>
+  <tile id="214">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtCliffLeftAlt.png"/>
+  </tile>
+  <tile id="215">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtCliffRight.png"/>
+  </tile>
+  <tile id="216">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtCliffRightAlt.png"/>
+  </tile>
+  <tile id="217">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHalf.png"/>
+  </tile>
+  <tile id="218">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHalfLeft.png"/>
+  </tile>
+  <tile id="219">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHalfMid.png"/>
+  </tile>
+  <tile id="220">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHalfRight.png"/>
+  </tile>
+  <tile id="221">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHillLeft.png"/>
+  </tile>
+  <tile id="222">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHillLeft2.png"/>
+  </tile>
+  <tile id="223">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHillRight.png"/>
+  </tile>
+  <tile id="224">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtHillRight2.png"/>
+  </tile>
+  <tile id="225">
+   <image width="6" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtLedgeLeft.png"/>
+  </tile>
+  <tile id="226">
+   <image width="6" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtLedgeRight.png"/>
+  </tile>
+  <tile id="227">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtLeft.png"/>
+  </tile>
+  <tile id="228">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtMid.png"/>
+  </tile>
+  <tile id="229">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/dirtRight.png"/>
+  </tile>
+  <tile id="230">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/door_closedMid.png"/>
+  </tile>
+  <tile id="231">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/door_closedTop.png"/>
+  </tile>
+  <tile id="232">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/door_openMid.png"/>
+  </tile>
+  <tile id="233">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/door_openTop.png"/>
+  </tile>
+  <tile id="234">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/fence.png"/>
+  </tile>
+  <tile id="235">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/fenceBroken.png"/>
+  </tile>
+  <tile id="236">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grass.png"/>
+  </tile>
+  <tile id="237">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassCenter.png"/>
+  </tile>
+  <tile id="238">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassCenter_rounded.png"/>
+  </tile>
+  <tile id="239">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassCliffLeft.png"/>
+  </tile>
+  <tile id="240">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassCliffLeftAlt.png"/>
+  </tile>
+  <tile id="241">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassCliffRight.png"/>
+  </tile>
+  <tile id="242">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassCliffRightAlt.png"/>
+  </tile>
+  <tile id="243">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHalf.png"/>
+  </tile>
+  <tile id="244">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHalfLeft.png"/>
+  </tile>
+  <tile id="245">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHalfMid.png"/>
+  </tile>
+  <tile id="246">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHalfRight.png"/>
+  </tile>
+  <tile id="247">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHillLeft.png"/>
+  </tile>
+  <tile id="248">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHillLeft2.png"/>
+  </tile>
+  <tile id="249">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHillRight.png"/>
+  </tile>
+  <tile id="250">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassHillRight2.png"/>
+  </tile>
+  <tile id="251">
+   <image width="4" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassLedgeLeft.png"/>
+  </tile>
+  <tile id="252">
+   <image width="4" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassLedgeRight.png"/>
+  </tile>
+  <tile id="253">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassLeft.png"/>
+  </tile>
+  <tile id="254">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassMid.png"/>
+  </tile>
+  <tile id="255">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/grassRight.png"/>
+  </tile>
+  <tile id="256">
+   <image width="20" height="61" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/hill_large.png"/>
+  </tile>
+  <tile id="257">
+   <image width="20" height="61" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/hill_largeAlt.png"/>
+  </tile>
+  <tile id="258">
+   <image width="20" height="44" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/hill_small.png"/>
+  </tile>
+  <tile id="259">
+   <image width="20" height="44" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/hill_smallAlt.png"/>
+  </tile>
+  <tile id="260">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/ladder_mid.png"/>
+  </tile>
+  <tile id="261">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/ladder_top.png"/>
+  </tile>
+  <tile id="262">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/liquidLava.png"/>
+  </tile>
+  <tile id="263">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/liquidLavaTop.png"/>
+  </tile>
+  <tile id="264">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/liquidLavaTop_mid.png"/>
+  </tile>
+  <tile id="265">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/liquidWater.png"/>
+  </tile>
+  <tile id="266">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/liquidWaterTop.png"/>
+  </tile>
+  <tile id="267">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/liquidWaterTop_mid.png"/>
+  </tile>
+  <tile id="268">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/lock_blue.png"/>
+  </tile>
+  <tile id="269">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/lock_green.png"/>
+  </tile>
+  <tile id="270">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/lock_red.png"/>
+  </tile>
+  <tile id="271">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/lock_yellow.png"/>
+  </tile>
+  <tile id="272">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/rockHillLeft.png"/>
+  </tile>
+  <tile id="273">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/rockHillRight.png"/>
+  </tile>
+  <tile id="274">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/ropeAttached.png"/>
+  </tile>
+  <tile id="275">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/ropeHorizontal.png"/>
+  </tile>
+  <tile id="276">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/ropeVertical.png"/>
+  </tile>
+  <tile id="277">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sand.png"/>
+  </tile>
+  <tile id="278">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandCenter.png"/>
+  </tile>
+  <tile id="279">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandCenter_rounded.png"/>
+  </tile>
+  <tile id="280">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandCliffLeft.png"/>
+  </tile>
+  <tile id="281">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandCliffLeftAlt.png"/>
+  </tile>
+  <tile id="282">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandCliffRight.png"/>
+  </tile>
+  <tile id="283">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandCliffRightAlt.png"/>
+  </tile>
+  <tile id="284">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHalf.png"/>
+  </tile>
+  <tile id="285">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHalfLeft.png"/>
+  </tile>
+  <tile id="286">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHalfMid.png"/>
+  </tile>
+  <tile id="287">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHalfRight.png"/>
+  </tile>
+  <tile id="288">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHillLeft.png"/>
+  </tile>
+  <tile id="289">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHillLeft2.png"/>
+  </tile>
+  <tile id="290">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHillRight.png"/>
+  </tile>
+  <tile id="291">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandHillRight2.png"/>
+  </tile>
+  <tile id="292">
+   <image width="6" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandLedgeLeft.png"/>
+  </tile>
+  <tile id="293">
+   <image width="6" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandLedgeRight.png"/>
+  </tile>
+  <tile id="294">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandLeft.png"/>
+  </tile>
+  <tile id="295">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandMid.png"/>
+  </tile>
+  <tile id="296">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sandRight.png"/>
+  </tile>
+  <tile id="297">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/sign.png"/>
+  </tile>
+  <tile id="298">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/signExit.png"/>
+  </tile>
+  <tile id="299">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/signLeft.png"/>
+  </tile>
+  <tile id="300">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/signRight.png"/>
+  </tile>
+  <tile id="301">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snow.png"/>
+  </tile>
+  <tile id="302">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowCenter.png"/>
+  </tile>
+  <tile id="303">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowCenter_rounded.png"/>
+  </tile>
+  <tile id="304">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowCliffLeft.png"/>
+  </tile>
+  <tile id="305">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowCliffLeftAlt.png"/>
+  </tile>
+  <tile id="306">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowCliffRight.png"/>
+  </tile>
+  <tile id="307">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowCliffRightAlt.png"/>
+  </tile>
+  <tile id="308">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHalf.png"/>
+  </tile>
+  <tile id="309">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHalfLeft.png"/>
+  </tile>
+  <tile id="310">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHalfMid.png"/>
+  </tile>
+  <tile id="311">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHalfRight.png"/>
+  </tile>
+  <tile id="312">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHillLeft.png"/>
+  </tile>
+  <tile id="313">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHillLeft2.png"/>
+  </tile>
+  <tile id="314">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHillRight.png"/>
+  </tile>
+  <tile id="315">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowHillRight2.png"/>
+  </tile>
+  <tile id="316">
+   <image width="6" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowLedgeLeft.png"/>
+  </tile>
+  <tile id="317">
+   <image width="6" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowLedgeRight.png"/>
+  </tile>
+  <tile id="318">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowLeft.png"/>
+  </tile>
+  <tile id="319">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowMid.png"/>
+  </tile>
+  <tile id="320">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/snowRight.png"/>
+  </tile>
+  <tile id="321">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stone.png"/>
+  </tile>
+  <tile id="322">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneCenter.png"/>
+  </tile>
+  <tile id="323">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneCenter_rounded.png"/>
+  </tile>
+  <tile id="324">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneCliffLeft.png"/>
+  </tile>
+  <tile id="325">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneCliffLeftAlt.png"/>
+  </tile>
+  <tile id="326">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneCliffRight.png"/>
+  </tile>
+  <tile id="327">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneCliffRightAlt.png"/>
+  </tile>
+  <tile id="328">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneHalf.png"/>
+  </tile>
+  <tile id="329">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneHalfLeft.png"/>
+  </tile>
+  <tile id="330">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneHalfMid.png"/>
+  </tile>
+  <tile id="331">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneHalfRight.png"/>
+  </tile>
+  <tile id="332">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneHillLeft2.png"/>
+  </tile>
+  <tile id="333">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneHillRight2.png"/>
+  </tile>
+  <tile id="334">
+   <image width="4" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneLedgeLeft.png"/>
+  </tile>
+  <tile id="335">
+   <image width="4" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneLedgeRight.png"/>
+  </tile>
+  <tile id="336">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneLeft.png"/>
+  </tile>
+  <tile id="337">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneMid.png"/>
+  </tile>
+  <tile id="338">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneRight.png"/>
+  </tile>
+  <tile id="339">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/stoneWall.png"/>
+  </tile>
+  <tile id="340">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/tochLit.png"/>
+  </tile>
+  <tile id="341">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/tochLit2.png"/>
+  </tile>
+  <tile id="342">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/torch.png"/>
+  </tile>
+  <tile id="343">
+   <image width="20" height="20" source="../../../../Downloads/Kenney Game Assets (version 40)/Art/Platformer assets (1330 assets)/Base pack (360 assets)/PNG/Tiles_small/window.png"/>
+  </tile>
+ </tileset>
+ <layer name="Tile Layer 1" width="100" height="100">
+  <data encoding="csv">
+   <chunk x="-16" y="-32" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238
+</chunk>
+   <chunk x="0" y="-32" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+   <chunk x="-16" y="-16" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238
+</chunk>
+   <chunk x="0" y="-16" width="16" height="16">
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+   <chunk x="-16" y="0" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+   <chunk x="0" y="0" width="16" height="16">
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+238,0,0,0,0,0,301,0,0,0,0,0,0,0,0,0,
+238,254,254,254,254,254,254,250,0,0,0,0,0,0,0,190,
+238,239,239,239,239,239,239,251,250,0,0,0,0,0,0,0,
+238,239,239,239,239,239,239,238,251,250,0,0,0,0,0,0,
+238,239,239,239,239,239,239,238,238,251,237,237,237,237,237,237,
+238,239,239,239,239,239,239,238,238,238,238,238,238,238,238,238,
+238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,
+238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,
+238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+   <chunk x="16" y="0" width="16" height="16">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,174,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,174,174,0,0,0,0,0,0,0,0,0,0,0,0,0,
+190,190,190,190,190,0,0,0,0,0,0,0,248,237,237,237,
+0,0,0,0,0,0,0,0,0,0,248,237,249,238,238,238,
+0,0,0,0,0,0,0,0,0,248,249,238,238,238,238,238,
+237,237,237,237,237,237,237,237,237,249,238,238,238,238,238,238,
+238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,
+238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,
+238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,
+238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</chunk>
+  </data>
+ </layer>
+</map>
