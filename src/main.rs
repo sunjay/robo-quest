@@ -1,7 +1,10 @@
 extern crate sdl2;
 
-use std::path::Path;
-use std::time::Duration;
+use std::{
+    path::Path,
+    time::{Duration, Instant},
+    thread,
+};
 
 use sdl2::{
     event::Event,
@@ -24,7 +27,7 @@ fn main() -> Result<(), String> {
         .accelerated().build().unwrap();
     let texture_creator = canvas.texture_creator();
 
-    canvas.set_draw_color(Color::RGBA(0,0,0,255));
+    canvas.set_draw_color(Color::RGBA(0, 0, 0, 255));
 
     let mut timer = sdl_context.timer()?;
     let mut event_pump = sdl_context.event_pump()?;
@@ -44,6 +47,7 @@ fn main() -> Result<(), String> {
     let fps = 60;
     let mut running = true;
     while running {
+        let frame_timer = Instant::now();
         for event in event_pump.poll_iter() {
             match event {
                 Event::Quit {..} | Event::KeyDown {keycode: Some(Keycode::Escape), ..} => {
@@ -57,7 +61,7 @@ fn main() -> Result<(), String> {
                     robot_center = robot_center.offset(-3, 0);
                     face_left = true;
                 },
-                _ => {}
+                _ => {},
             }
         }
 
@@ -77,7 +81,11 @@ fn main() -> Result<(), String> {
         canvas.copy_ex(&robot_texture, Some(robot_source_rect), Some(robot_dest_rect), 0.0, None, face_left, false)?;
         canvas.present();
 
-        std::thread::sleep(Duration::from_millis(100));
+        let elapsed = frame_timer.elapsed();
+        let frame_length = Duration::from_millis(1000 / fps);
+        if frame_length > elapsed {
+            thread::sleep(frame_length - elapsed);
+        }
     }
 
     Ok(())
