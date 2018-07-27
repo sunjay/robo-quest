@@ -33,8 +33,8 @@ fn main() -> Result<(), String> {
     let robot_texture = texture_creator.create_texture_from_surface(&robot_surface).unwrap();
     // The position on the texture of the robot
     let robot_animation = [
-        Rect::new(147, 153, 42, 40),
-        Rect::new(147, 193, 42, 40),
+        Rect::new(110, 115, 32, 30),
+        Rect::new(110, 145, 32, 30),
     ];
     let robot_animation_speed = 0.9;
     let robot_center = Point::new(160, 120);
