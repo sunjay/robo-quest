@@ -162,8 +162,8 @@ impl<'a> System<'a> for Animator {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct TextureId(usize);
 
-#[derive(Default)]
 struct TextureManager<'a> {
+    texture_creator: &'a TextureCreator<WindowContext>,
     // NOTE: Ideally, this would just be managed in the renderer, but we can't do that because
     // we can't have a field in a struct that refers to another field. Textures are dependent
     // on the TextureCreator and they need to be stored separately in order for this to work.
@@ -171,18 +171,21 @@ struct TextureManager<'a> {
 }
 
 impl<'a> TextureManager<'a> {
+    pub fn new(texture_creator: &'a TextureCreator<WindowContext>) -> Self {
+        Self {
+            texture_creator,
+            textures: Default::default(),
+        }
+    }
+
     pub fn get(&self, TextureId(index): TextureId) -> &Texture<'a> {
         &self.textures[index]
     }
 
-    pub fn create_bmp_texture<P: AsRef<Path>>(
-        &mut self,
-        texture_creator: &'a TextureCreator<WindowContext>,
-        path: P,
-    ) -> Result<TextureId, String> {
+    pub fn create_bmp_texture<P: AsRef<Path>>(&mut self, path: P) -> Result<TextureId, String> {
         let surface = Surface::load_bmp(path)?;
         //FIXME: Remove this unwrap() when we start using proper error types
-        let texture = texture_creator.create_texture_from_surface(surface).unwrap();
+        let texture = self.texture_creator.create_texture_from_surface(surface).unwrap();
 
         self.textures.push(texture);
         Ok(TextureId(self.textures.len() - 1))
@@ -269,7 +272,7 @@ impl Renderer {
 fn main() -> Result<(), String> {
     let mut renderer = Renderer::init()?;
     let texture_creator = renderer.texture_creator();
-    let mut textures = TextureManager::default();
+    let mut textures = TextureManager::new(&texture_creator);
     let mut event_pump = renderer.event_pump()?;
 
     let mut world = World::new();
@@ -284,7 +287,7 @@ fn main() -> Result<(), String> {
     world.add_resource(GameKeys::from(event_pump.keyboard_state()));
 
     // Add the robot
-    let robot_texture = textures.create_bmp_texture(&texture_creator, "assets/robots.bmp")?;
+    let robot_texture = textures.create_bmp_texture("assets/robots.bmp")?;
     let canvas_size = renderer.dimensions()?;
     let robot_center = Point::new(canvas_size.0 as i32 / 2, canvas_size.1 as i32 / 2);
     let robot_animation = [
