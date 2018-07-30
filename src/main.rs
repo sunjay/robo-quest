@@ -185,6 +185,7 @@ impl<'a> Renderer<'a> {
         //FIXME: Remove this unwrap() when we start using proper error types
         let mut canvas = window.into_canvas()
             .accelerated()
+            .present_vsync()
             .build()
             .unwrap();
         let texture_creator = canvas.texture_creator();
