@@ -139,12 +139,13 @@ impl<'a> System<'a> for Keyboard {
 struct PositionUpdater;
 
 impl<'a> System<'a> for PositionUpdater {
-    type SystemData = (ReadStorage<'a, Velocity>, WriteStorage<'a, Position>);
+    type SystemData = (ReadExpect<'a, FramesElapsed>, ReadStorage<'a, Velocity>, WriteStorage<'a, Position>);
 
-    fn run(&mut self, (vel, mut pos): Self::SystemData) {
-        for (Velocity(vel), Position(pos)) in (&vel, &mut pos).join() {
-            let time_delta = 0.05; //TODO
-            *pos = pos.offset((vel.x() as f64 * time_delta) as i32, (vel.y() as f64 * time_delta) as i32);
+    fn run(&mut self, (frames, velocities, mut positions): Self::SystemData) {
+        let FramesElapsed(frames_elapsed) = *frames;
+
+        for (Velocity(vel), Position(pos)) in (&velocities, &mut positions).join() {
+            *pos = pos.offset(vel.x() * frames_elapsed as i32, vel.y() * frames_elapsed as i32);
         }
     }
 }
@@ -152,10 +153,30 @@ impl<'a> System<'a> for PositionUpdater {
 struct Animator;
 
 impl<'a> System<'a> for Animator {
-    type SystemData = (ReadExpect<'a, FramesElapsed>, ReadStorage<'a, Velocity>, ReadStorage<'a, Sprite>, ReadStorage<'a, MovementAnimation>);
+    type SystemData = (ReadExpect<'a, FramesElapsed>, ReadStorage<'a, Velocity>, WriteStorage<'a, Sprite>, WriteStorage<'a, MovementAnimation>);
 
-    fn run(&mut self, (frames, vel, pos, animations): Self::SystemData) {
-        unimplemented!();
+    fn run(&mut self, (frames, velocities, mut positions, mut animations): Self::SystemData) {
+        let FramesElapsed(frames_elapsed) = *frames;
+
+        for (&Velocity(vel), sprite, animation) in (&velocities, &mut positions, &mut animations).join() {
+            // The assumption is that the sprite begins facing right
+            if vel.x() > 0 {
+                sprite.flip_horizontal = false;
+            }
+            else if vel.x() < 0 {
+                sprite.flip_horizontal = true;
+            }
+            else {
+                // Only animate if moving
+                continue;
+            }
+
+            animation.current_step = (animation.current_step + frames_elapsed) % (animation.steps.len() * animation.frames_per_step);
+
+            let (current_texture_id, current_region) = animation.steps[animation.current_step];
+            sprite.texture_id = current_texture_id;
+            sprite.region = current_region;
+        }
     }
 }
 
