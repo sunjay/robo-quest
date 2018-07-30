@@ -162,15 +162,39 @@ impl<'a> System<'a> for Animator {
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 struct TextureId(usize);
 
-struct Renderer<'a> {
-    sdl_context: Sdl,
-    canvas: Canvas<Window>,
-    texture_creator: TextureCreator<WindowContext>,
-    surfaces: Vec<Surface<'a>>,
+#[derive(Default)]
+struct TextureManager<'a> {
+    // NOTE: Ideally, this would just be managed in the renderer, but we can't do that because
+    // we can't have a field in a struct that refers to another field. Textures are dependent
+    // on the TextureCreator and they need to be stored separately in order for this to work.
     textures: Vec<Texture<'a>>,
 }
 
-impl<'a> Renderer<'a> {
+impl<'a> TextureManager<'a> {
+    pub fn get(&self, TextureId(index): TextureId) -> &Texture<'a> {
+        &self.textures[index]
+    }
+
+    pub fn create_bmp_texture<P: AsRef<Path>>(
+        &mut self,
+        texture_creator: &'a TextureCreator<WindowContext>,
+        path: P,
+    ) -> Result<TextureId, String> {
+        let surface = Surface::load_bmp(path)?;
+        //FIXME: Remove this unwrap() when we start using proper error types
+        let texture = texture_creator.create_texture_from_surface(surface).unwrap();
+
+        self.textures.push(texture);
+        Ok(TextureId(self.textures.len() - 1))
+    }
+}
+
+struct Renderer {
+    sdl_context: Sdl,
+    canvas: Canvas<Window>,
+}
+
+impl Renderer {
     pub fn init() -> Result<Self, String> {
         let sdl_context = sdl2::init()?;
         let video_subsystem = sdl_context.video()?;
@@ -188,7 +212,6 @@ impl<'a> Renderer<'a> {
             .present_vsync()
             .build()
             .unwrap();
-        let texture_creator = canvas.texture_creator();
 
         // The background color
         canvas.set_draw_color(Color::RGBA(0, 0, 0, 255));
@@ -196,14 +219,15 @@ impl<'a> Renderer<'a> {
         Ok(Self {
             sdl_context,
             canvas,
-            texture_creator,
-            surfaces: Vec::new(),
-            textures: Vec::new(),
         })
     }
 
     pub fn dimensions(&self) -> Result<(u32, u32), String> {
         self.canvas.output_size()
+    }
+
+    pub fn texture_creator(&self) -> TextureCreator<WindowContext> {
+        self.canvas.texture_creator()
     }
 
     pub fn timer(&self) -> Result<TimerSubsystem, String> {
@@ -214,24 +238,13 @@ impl<'a> Renderer<'a> {
         self.sdl_context.event_pump()
     }
 
-    pub fn create_bmp_texture<P: AsRef<Path>>(&mut self, path: P) -> Result<TextureId, String> {
-        let surface = Surface::load_bmp(path)?;
-        self.surfaces.push(surface);
-        //FIXME: Remove this unwrap() when we start using proper error types
-        let texture = self.texture_creator.create_texture_from_surface(self.surfaces.last().unwrap()).unwrap();
-
-        self.textures.push(texture);
-        Ok(TextureId(self.textures.len() - 1))
-    }
-
-    pub fn render(&mut self, world: &World) -> Result<(), String> {
+    pub fn render(&mut self, world: &World, textures: &TextureManager) -> Result<(), String> {
         self.canvas.clear();
 
         let (positions, sprites): (ReadStorage<Position>, ReadStorage<Sprite>) = world.system_data();
         //FIXME: The ordering of rendering needs to be made explicit with layering or something
         for (Position(pos), sprite) in (&positions, &sprites).join() {
-            let TextureId(texture_index) = sprite.texture_id;
-            let texture = &self.textures[texture_index];
+            let texture = textures.get(sprite.texture_id);
             let source_rect = sprite.region;
             let mut dest_rect = source_rect.clone();
             dest_rect.center_on(*pos);
@@ -255,7 +268,9 @@ impl<'a> Renderer<'a> {
 
 fn main() -> Result<(), String> {
     let mut renderer = Renderer::init()?;
-    let event_pump = renderer.event_pump()?;
+    let texture_creator = renderer.texture_creator();
+    let mut textures = TextureManager::default();
+    let mut event_pump = renderer.event_pump()?;
 
     let mut world = World::new();
     //FIXME: Replace with setup: https://slide-rs.github.io/specs/07_setup.html
@@ -269,7 +284,7 @@ fn main() -> Result<(), String> {
     world.add_resource(GameKeys::from(event_pump.keyboard_state()));
 
     // Add the robot
-    let robot_texture = renderer.create_bmp_texture("assets/robot.bmp")?;
+    let robot_texture = textures.create_bmp_texture(&texture_creator, "assets/robots.bmp")?;
     let canvas_size = renderer.dimensions()?;
     let robot_center = Point::new(canvas_size.0 as i32 / 2, canvas_size.1 as i32 / 2);
     let robot_animation = [
@@ -322,13 +337,12 @@ fn main() -> Result<(), String> {
 
         // At least one frame must have passed for us to do anything
         if frames_elapsed_delta >= 1 {
-            let mut elapsed_resource = world.write_resource::<FramesElapsed>();
-            *elapsed_resource = FramesElapsed(frames_elapsed_delta);
-            let mut keystate_resource = world.write_resource::<GameKeys>();
-            *keystate_resource = GameKeys::from(event_pump.keyboard_state());
+            *world.write_resource::<FramesElapsed>() = FramesElapsed(frames_elapsed_delta);
+            *world.write_resource::<GameKeys>() = GameKeys::from(event_pump.keyboard_state());
 
             dispatcher.dispatch(&mut world.res);
 
+            renderer.render(&world, &textures)?;
             last_frames_elapsed = frames_elapsed;
         }
         else {
