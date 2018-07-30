@@ -64,7 +64,7 @@ struct Sprite {
 struct MovementAnimation {
     steps: Vec<(TextureId, Rect)>,
     frames_per_step: usize,
-    current_step: usize,
+    frame_counter: usize,
 }
 
 /// Resource that represents the number of frames elapsed since the last time all of the systems
@@ -169,21 +169,22 @@ impl<'a> System<'a> for Animator {
         let FramesElapsed(frames_elapsed) = *frames;
 
         for (&Velocity(vel), sprite, animation) in (&velocities, &mut positions, &mut animations).join() {
-            // The assumption is that the sprite begins facing right
             if vel.x() > 0 {
+                // The assumption is that the sprite begins facing right
                 sprite.flip_horizontal = false;
             }
             else if vel.x() < 0 {
                 sprite.flip_horizontal = true;
             }
-            else {
-                // Only animate if moving
+            else { // No horizontal movement
+                // Only continue to animate if moving
                 continue;
             }
 
-            animation.current_step = (animation.current_step + frames_elapsed) % (animation.steps.len() * animation.frames_per_step);
+            animation.frame_counter += frames_elapsed;
+            let current_step = animation.frame_counter % (animation.steps.len() * animation.frames_per_step) / animation.frames_per_step;
 
-            let (current_texture_id, current_region) = animation.steps[animation.current_step];
+            let (current_texture_id, current_region) = animation.steps[current_step];
             sprite.texture_id = current_texture_id;
             sprite.region = current_region;
         }
@@ -329,6 +330,7 @@ fn main() -> Result<(), String> {
     world.create_entity()
         .with(KeyboardControlled)
         .with(Position(robot_center))
+        .with(Velocity(Point::new(0, 0)))
         .with(Sprite {
             texture_id: robot_texture,
             region: robot_animation[0],
@@ -337,7 +339,7 @@ fn main() -> Result<(), String> {
         .with(MovementAnimation {
             steps: robot_animation.into_iter().map(|&rect| (robot_texture, rect)).collect(),
             frames_per_step: 5,
-            current_step: 0,
+            frame_counter: 0,
         })
         .build();
 
@@ -349,7 +351,7 @@ fn main() -> Result<(), String> {
 
     let mut timer = renderer.timer()?;
 
-    let fps = 30;
+    let fps = 60;
 
     // Frames elapsed since the last render
     let mut last_frames_elapsed = 0;
