@@ -519,6 +519,117 @@
    <image width="20" height="20" source="../assets/tiles/window.png"/>
   </tile>
  </tileset>
+ <tileset firstgid="345" name="Robots" tilewidth="32" tileheight="30" tilecount="34" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="34">
+   <image width="32" height="26" source="../assets/robots/robot_blueBody.png"/>
+  </tile>
+  <tile id="35">
+   <image width="32" height="26" source="../assets/robots/robot_blueDamage1.png"/>
+  </tile>
+  <tile id="36">
+   <image width="32" height="26" source="../assets/robots/robot_blueDamage2.png"/>
+  </tile>
+  <tile id="37">
+   <image width="32" height="30" source="../assets/robots/robot_blueDrive1.png"/>
+  </tile>
+  <tile id="38">
+   <image width="32" height="30" source="../assets/robots/robot_blueDrive2.png"/>
+  </tile>
+  <tile id="39">
+   <image width="32" height="26" source="../assets/robots/robot_blueHurt.png"/>
+  </tile>
+  <tile id="40">
+   <image width="32" height="29" source="../assets/robots/robot_blueJump.png"/>
+  </tile>
+  <tile id="41">
+   <image width="32" height="21" source="../assets/robots/robot_greenBody.png"/>
+  </tile>
+  <tile id="42">
+   <image width="32" height="21" source="../assets/robots/robot_greenDamage1.png"/>
+  </tile>
+  <tile id="43">
+   <image width="32" height="21" source="../assets/robots/robot_greenDamage2.png"/>
+  </tile>
+  <tile id="44">
+   <image width="32" height="24" source="../assets/robots/robot_greenDrive1.png"/>
+  </tile>
+  <tile id="45">
+   <image width="32" height="23" source="../assets/robots/robot_greenDrive2.png"/>
+  </tile>
+  <tile id="46">
+   <image width="32" height="21" source="../assets/robots/robot_greenHurt.png"/>
+  </tile>
+  <tile id="47">
+   <image width="32" height="24" source="../assets/robots/robot_greenJump.png"/>
+  </tile>
+  <tile id="48">
+   <image width="32" height="23" source="../assets/robots/robot_redBody.png"/>
+  </tile>
+  <tile id="49">
+   <image width="32" height="23" source="../assets/robots/robot_redDamage1.png"/>
+  </tile>
+  <tile id="50">
+   <image width="32" height="23" source="../assets/robots/robot_redDamage2.png"/>
+  </tile>
+  <tile id="51">
+   <image width="32" height="27" source="../assets/robots/robot_redDrive1.png"/>
+  </tile>
+  <tile id="52">
+   <image width="32" height="26" source="../assets/robots/robot_redDrive2.png"/>
+  </tile>
+  <tile id="53">
+   <image width="32" height="23" source="../assets/robots/robot_redHurt.png"/>
+  </tile>
+  <tile id="54">
+   <image width="32" height="26" source="../assets/robots/robot_redJump.png"/>
+  </tile>
+  <tile id="55">
+   <image width="32" height="22" source="../assets/robots/robot_yellowBody.png"/>
+  </tile>
+  <tile id="56">
+   <image width="32" height="22" source="../assets/robots/robot_yellowDamage1.png"/>
+  </tile>
+  <tile id="57">
+   <image width="32" height="22" source="../assets/robots/robot_yellowDamage2.png"/>
+  </tile>
+  <tile id="58">
+   <image width="32" height="26" source="../assets/robots/robot_yellowDrive1.png"/>
+  </tile>
+  <tile id="59">
+   <image width="32" height="25" source="../assets/robots/robot_yellowDrive2.png"/>
+  </tile>
+  <tile id="60">
+   <image width="32" height="22" source="../assets/robots/robot_yellowHurt.png"/>
+  </tile>
+  <tile id="61">
+   <image width="32" height="26" source="../assets/robots/robot_yellowJump.png"/>
+  </tile>
+  <tile id="62">
+   <image width="32" height="21" source="../assets/robots/tracks_back1.png"/>
+  </tile>
+  <tile id="63">
+   <image width="32" height="21" source="../assets/robots/tracks_back2.png"/>
+  </tile>
+  <tile id="64">
+   <image width="32" height="17" source="../assets/robots/tracks_long1.png"/>
+  </tile>
+  <tile id="65">
+   <image width="32" height="17" source="../assets/robots/tracks_long2.png"/>
+  </tile>
+  <tile id="66">
+   <image width="32" height="21" source="../assets/robots/tracks_short1.png"/>
+  </tile>
+  <tile id="67">
+   <image width="32" height="21" source="../assets/robots/tracks_short2.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="413" name="Markers" tilewidth="32" tileheight="30" tilecount="1" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0" type="level_start">
+   <image width="32" height="30" source="../assets/markers/level_start.png"/>
+  </tile>
+ </tileset>
  <layer name="Tile Layer 1" width="100" height="100">
   <data encoding="csv">
    <chunk x="-16" y="-32" width="16" height="16">
@@ -618,7 +729,7 @@
 238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 238,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-238,0,0,0,0,0,301,0,0,0,0,0,0,0,0,0,
+238,0,413,0,0,0,301,0,0,0,0,0,0,0,0,0,
 238,255,255,255,255,255,255,250,0,0,0,0,0,0,0,190,
 238,238,238,238,238,238,238,251,250,0,0,0,0,0,0,0,
 238,238,238,238,238,238,238,238,251,250,0,0,0,0,0,0,
