@@ -8,7 +8,7 @@ rust:
 addons:
   apt:
     packages:
-    - sdl2-dev
+    - libsdl2-dev
 matrix:
   allow_failures:
     - rust: nightly
