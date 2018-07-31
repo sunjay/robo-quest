@@ -4,7 +4,10 @@ extern crate specs;
 #[macro_use]
 extern crate specs_derive;
 
-use std::path::Path;
+use std::{
+    env,
+    path::Path,
+};
 
 use sdl2::{
     Sdl,
@@ -230,16 +233,22 @@ struct Renderer {
 }
 
 impl Renderer {
-    pub fn init() -> Result<Self, String> {
+    pub fn init(width: u32, height: u32) -> Result<Self, String> {
         let sdl_context = sdl2::init()?;
         let video_subsystem = sdl_context.video()?;
 
+        // Scale display if a certain environment variable is set
+        let display_scale = env::var("DISPLAY_SCALE")
+            .map(|x| x.parse().expect("DISPLAY_SCALE must be a number"))
+            .unwrap_or(1.0);
+
         //FIXME: Remove this unwrap() when we start using proper error types
-        let window = video_subsystem.window("Robo Quest", 320, 240)
+        let window_width = (width as f32 * display_scale) as u32;
+        let window_height = (height as f32 * display_scale) as u32;
+        let window = video_subsystem.window("Robo Quest", window_width, window_height)
             .position_centered()
             .build()
             .unwrap();
-
 
         //FIXME: Remove this unwrap() when we start using proper error types
         let mut canvas = window.into_canvas()
@@ -251,14 +260,17 @@ impl Renderer {
         // The background color
         canvas.set_draw_color(Color::RGBA(0, 0, 0, 255));
 
+        //FIXME: Remove this unwrap() when we start using proper error types
+        canvas.set_logical_size(width, height).unwrap();
+
         Ok(Self {
             sdl_context,
             canvas,
         })
     }
 
-    pub fn dimensions(&self) -> Result<(u32, u32), String> {
-        self.canvas.output_size()
+    pub fn dimensions(&self) -> (u32, u32) {
+        self.canvas.logical_size()
     }
 
     pub fn texture_creator(&self) -> TextureCreator<WindowContext> {
@@ -302,7 +314,7 @@ impl Renderer {
 }
 
 fn main() -> Result<(), String> {
-    let mut renderer = Renderer::init()?;
+    let mut renderer = Renderer::init(320, 240)?;
     let texture_creator = renderer.texture_creator();
     let mut textures = TextureManager::new(&texture_creator);
     let mut event_pump = renderer.event_pump()?;
@@ -320,7 +332,7 @@ fn main() -> Result<(), String> {
 
     // Add the robot
     let robot_texture = textures.create_bmp_texture("assets/robots.bmp")?;
-    let canvas_size = renderer.dimensions()?;
+    let canvas_size = renderer.dimensions();
     let robot_center = Point::new(canvas_size.0 as i32 / 2, canvas_size.1 as i32 / 2);
     let robot_animation = [
         // The position on the texture of the robot

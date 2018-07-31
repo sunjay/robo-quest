@@ -3,6 +3,14 @@
 This game is written to explicitly target the
 [GameShell](https://www.clockworkpi.com/).
 
+## Usage
+
+Use `DISPLAY_SCALE=n` for some `n >= 1` to make seeing the game easier.
+
+```bash
+$ DISPLAY_SCALE=2 cargo run
+```
+
 ## Story
 
 The game begins with a robot that has just turned on in the middle of a forest.
