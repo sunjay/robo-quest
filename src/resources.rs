@@ -43,18 +43,17 @@ impl<'a> From<KeyboardState<'a>> for GameKeys {
             menu: keys.is_scancode_pressed(Scancode::Escape),
             select: keys.is_scancode_pressed(Scancode::Space),
             start: keys.is_scancode_pressed(Scancode::Return),
-            volume_down: keys.is_scancode_pressed(Scancode::Minus),
-            //FIXME: This probably isn't the right key
+            volume_down: keys.is_scancode_pressed(Scancode::KpMinus),
             volume_up: keys.is_scancode_pressed(Scancode::KpPlus),
-            x: keys.is_scancode_pressed(Scancode::U),
-            y: keys.is_scancode_pressed(Scancode::I),
-            a: keys.is_scancode_pressed(Scancode::J),
-            b: keys.is_scancode_pressed(Scancode::K),
-            light_key_1: keys.is_scancode_pressed(Scancode::Home),
-            light_key_2: keys.is_scancode_pressed(Scancode::PageUp),
+            x: keys.is_scancode_pressed(Scancode::I),
+            y: keys.is_scancode_pressed(Scancode::U),
+            a: keys.is_scancode_pressed(Scancode::K),
+            b: keys.is_scancode_pressed(Scancode::J),
+            light_key_1: keys.is_scancode_pressed(Scancode::H),
+            light_key_2: keys.is_scancode_pressed(Scancode::Y),
             light_key_3: false, //FIXME: No way to check if Shift key pressed
-            light_key_4: keys.is_scancode_pressed(Scancode::PageDown),
-            light_key_5: keys.is_scancode_pressed(Scancode::End),
+            light_key_4: keys.is_scancode_pressed(Scancode::O),
+            light_key_5: keys.is_scancode_pressed(Scancode::L),
         }
     }
 }
