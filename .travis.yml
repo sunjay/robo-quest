@@ -9,6 +9,7 @@ addons:
   apt:
     packages:
     - libsdl2-dev
+    - libsdl2-image-dev
 matrix:
   allow_failures:
     - rust: nightly
