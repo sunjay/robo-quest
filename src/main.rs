@@ -44,7 +44,7 @@ fn main() -> Result<(), String> {
 
     let mut dispatcher = DispatcherBuilder::new()
         .with(systems::Keyboard, "Keyboard", &[])
-        .with(systems::PositionUpdater, "PositionUpdater", &["Keyboard"])
+        .with(systems::Physics, "Physics", &["Keyboard"])
         .with(systems::Animator, "Animator", &["Keyboard"])
         .build();
     dispatcher.setup(&mut world.res);

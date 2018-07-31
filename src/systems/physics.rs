@@ -3,9 +3,9 @@ use specs::{System, Join, ReadExpect, ReadStorage, WriteStorage};
 use components::{Velocity, Position};
 use resources::FramesElapsed;
 
-pub struct PositionUpdater;
+pub struct Physics;
 
-impl<'a> System<'a> for PositionUpdater {
+impl<'a> System<'a> for Physics {
     type SystemData = (ReadExpect<'a, FramesElapsed>, ReadStorage<'a, Velocity>, WriteStorage<'a, Position>);
 
     fn run(&mut self, (frames, velocities, mut positions): Self::SystemData) {
