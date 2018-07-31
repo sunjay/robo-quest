@@ -6,6 +6,8 @@ extern crate specs_derive;
 
 use std::{
     env,
+    thread,
+    time::Duration,
     path::Path,
 };
 
@@ -371,6 +373,8 @@ fn main() -> Result<(), String> {
     let mut last_frames_elapsed = 0;
     let mut running = true;
     while running {
+        let ticks = timer.ticks(); // ms
+
         for event in event_pump.poll_iter() {
             match event {
                 Event::Quit {..} | Event::KeyDown {keycode: Some(Keycode::Escape), ..} => {
@@ -379,8 +383,6 @@ fn main() -> Result<(), String> {
                 _ => {},
             }
         }
-
-        let ticks = timer.ticks(); // ms
 
         let frames_elapsed = (ticks as f64 / 1000.0 * fps as f64) as usize;
         let frames_elapsed_delta = frames_elapsed - last_frames_elapsed;
@@ -396,7 +398,9 @@ fn main() -> Result<(), String> {
             last_frames_elapsed = frames_elapsed;
         }
         else {
-            //TODO: sleep for the remainder of the frame in order to preserve battery
+            let ms_per_frame = (1000.0 / fps as f64) as u64;
+            let ms_elapsed = (timer.ticks() - ticks) as u64;
+            thread::sleep(Duration::from_millis(ms_per_frame - ms_elapsed));
         }
     }
 
