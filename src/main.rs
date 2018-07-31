@@ -38,15 +38,16 @@ fn main() -> Result<(), String> {
     let mut event_pump = renderer.event_pump()?;
 
     let mut world = World::new();
-    //FIXME: Replace with setup: https://slide-rs.github.io/specs/07_setup.html
-    world.register::<Position>();
-    world.register::<Velocity>();
-    world.register::<KeyboardControlled>();
-    world.register::<Sprite>();
-    world.register::<MovementAnimation>();
 
     world.add_resource(FramesElapsed(1));
     world.add_resource(GameKeys::from(event_pump.keyboard_state()));
+
+    let mut dispatcher = DispatcherBuilder::new()
+        .with(systems::Keyboard, "Keyboard", &[])
+        .with(systems::PositionUpdater, "PositionUpdater", &["Keyboard"])
+        .with(systems::Animator, "Animator", &["Keyboard"])
+        .build();
+    dispatcher.setup(&mut world.res);
 
     // Add the robot
     let robot_texture = textures.create_png_texture("assets/robots.png")?;
@@ -71,12 +72,6 @@ fn main() -> Result<(), String> {
             frames_per_step: 5,
             frame_counter: 0,
         })
-        .build();
-
-    let mut dispatcher = DispatcherBuilder::new()
-        .with(systems::Keyboard, "Keyboard", &[])
-        .with(systems::PositionUpdater, "PositionUpdater", &["Keyboard"])
-        .with(systems::Animator, "Animator", &["Keyboard"])
         .build();
 
     let mut timer = renderer.timer()?;
