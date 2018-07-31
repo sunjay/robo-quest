@@ -13,11 +13,11 @@ use sdl2::{
     Sdl,
     TimerSubsystem,
     EventPump,
+    image::{Sdl2ImageContext, LoadTexture, INIT_PNG},
     event::Event,
     keyboard::{Keycode, Scancode, KeyboardState},
     rect::{Rect, Point},
     pixels::Color,
-    surface::Surface,
     render::{TextureCreator, Texture, Canvas},
     video::{Window, WindowContext},
 };
@@ -217,10 +217,8 @@ impl<'a> TextureManager<'a> {
         &self.textures[index]
     }
 
-    pub fn create_bmp_texture<P: AsRef<Path>>(&mut self, path: P) -> Result<TextureId, String> {
-        let surface = Surface::load_bmp(path)?;
-        //FIXME: Remove this unwrap() when we start using proper error types
-        let texture = self.texture_creator.create_texture_from_surface(surface).unwrap();
+    pub fn create_png_texture<P: AsRef<Path>>(&mut self, path: P) -> Result<TextureId, String> {
+        let texture = self.texture_creator.load_texture(path)?;
 
         self.textures.push(texture);
         Ok(TextureId(self.textures.len() - 1))
@@ -229,6 +227,8 @@ impl<'a> TextureManager<'a> {
 
 struct Renderer {
     sdl_context: Sdl,
+    /// Required to use images, but not used for anything after it is created
+    _image_context: Sdl2ImageContext,
     canvas: Canvas<Window>,
 }
 
@@ -236,6 +236,7 @@ impl Renderer {
     pub fn init(width: u32, height: u32) -> Result<Self, String> {
         let sdl_context = sdl2::init()?;
         let video_subsystem = sdl_context.video()?;
+        let _image_context = sdl2::image::init(INIT_PNG).unwrap();
 
         // Scale display if a certain environment variable is set
         let display_scale = env::var("DISPLAY_SCALE")
@@ -265,6 +266,7 @@ impl Renderer {
 
         Ok(Self {
             sdl_context,
+            _image_context,
             canvas,
         })
     }
@@ -331,7 +333,7 @@ fn main() -> Result<(), String> {
     world.add_resource(GameKeys::from(event_pump.keyboard_state()));
 
     // Add the robot
-    let robot_texture = textures.create_bmp_texture("assets/robots.bmp")?;
+    let robot_texture = textures.create_png_texture("assets/robots.png")?;
     let canvas_size = renderer.dimensions();
     let robot_center = Point::new(canvas_size.0 as i32 / 2, canvas_size.1 as i32 / 2);
     let robot_animation = [
