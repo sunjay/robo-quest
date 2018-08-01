@@ -1,17 +1,27 @@
-extern crate sdl2;
-extern crate specs;
-extern crate shred;
+#[macro_use]
+extern crate failure;
 
 #[macro_use]
 extern crate specs_derive;
 #[macro_use]
 extern crate shred_derive;
 
+#[macro_use]
+extern crate serde_derive;
+
+extern crate serde;
+extern crate serde_json;
+
+extern crate sdl2;
+extern crate specs;
+extern crate shred;
+
 mod systems;
 mod components;
 mod renderer;
 mod resources;
 mod texture_manager;
+mod level_file;
 
 use std::{
     thread,
