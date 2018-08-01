@@ -1,0 +1,1209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" tiledversion="1.1.6" orientation="orthogonal" renderorder="right-down" width="128" height="32" tilewidth="20" tileheight="20" infinite="0" nextobjectid="9">
+ <tileset firstgid="1" name="Platformer" tilewidth="20" tileheight="61" tilecount="172" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="172">
+   <image width="20" height="20" source="../assets/tiles/box.png"/>
+  </tile>
+  <tile id="173">
+   <image width="20" height="20" source="../assets/tiles/boxAlt.png"/>
+  </tile>
+  <tile id="174">
+   <image width="20" height="20" source="../assets/tiles/boxCoin.png"/>
+  </tile>
+  <tile id="175">
+   <image width="20" height="20" source="../assets/tiles/boxCoinAlt.png"/>
+  </tile>
+  <tile id="176">
+   <image width="20" height="20" source="../assets/tiles/boxCoinAlt_disabled.png"/>
+  </tile>
+  <tile id="177">
+   <image width="20" height="20" source="../assets/tiles/boxCoin_disabled.png"/>
+  </tile>
+  <tile id="178">
+   <image width="20" height="20" source="../assets/tiles/boxEmpty.png"/>
+  </tile>
+  <tile id="179">
+   <image width="20" height="20" source="../assets/tiles/boxExplosive.png"/>
+  </tile>
+  <tile id="180">
+   <image width="20" height="20" source="../assets/tiles/boxExplosiveAlt.png"/>
+  </tile>
+  <tile id="181">
+   <image width="20" height="20" source="../assets/tiles/boxExplosive_disabled.png"/>
+  </tile>
+  <tile id="182">
+   <image width="20" height="20" source="../assets/tiles/boxItem.png"/>
+  </tile>
+  <tile id="183">
+   <image width="20" height="20" source="../assets/tiles/boxItemAlt.png"/>
+  </tile>
+  <tile id="184">
+   <image width="20" height="20" source="../assets/tiles/boxItemAlt_disabled.png"/>
+  </tile>
+  <tile id="185">
+   <image width="20" height="20" source="../assets/tiles/boxItem_disabled.png"/>
+  </tile>
+  <tile id="186">
+   <image width="20" height="20" source="../assets/tiles/boxWarning.png"/>
+  </tile>
+  <tile id="187">
+   <image width="20" height="20" source="../assets/tiles/brickWall.png"/>
+  </tile>
+  <tile id="188">
+   <image width="20" height="7" source="../assets/tiles/bridge.png"/>
+  </tile>
+  <tile id="189">
+   <image width="20" height="8" source="../assets/tiles/bridgeLogs.png"/>
+  </tile>
+  <tile id="190">
+   <image width="20" height="20" source="../assets/tiles/castle.png"/>
+  </tile>
+  <tile id="191">
+   <image width="20" height="20" source="../assets/tiles/castleCenter.png"/>
+  </tile>
+  <tile id="192">
+   <image width="20" height="20" source="../assets/tiles/castleCenter_rounded.png"/>
+  </tile>
+  <tile id="193">
+   <image width="20" height="20" source="../assets/tiles/castleCliffLeft.png"/>
+  </tile>
+  <tile id="194">
+   <image width="20" height="20" source="../assets/tiles/castleCliffLeftAlt.png"/>
+  </tile>
+  <tile id="195">
+   <image width="20" height="20" source="../assets/tiles/castleCliffRight.png"/>
+  </tile>
+  <tile id="196">
+   <image width="20" height="20" source="../assets/tiles/castleCliffRightAlt.png"/>
+  </tile>
+  <tile id="197">
+   <image width="20" height="20" source="../assets/tiles/castleHalf.png"/>
+  </tile>
+  <tile id="198">
+   <image width="20" height="20" source="../assets/tiles/castleHalfLeft.png"/>
+  </tile>
+  <tile id="199">
+   <image width="20" height="20" source="../assets/tiles/castleHalfMid.png"/>
+  </tile>
+  <tile id="200">
+   <image width="20" height="20" source="../assets/tiles/castleHalfRight.png"/>
+  </tile>
+  <tile id="201">
+   <image width="20" height="20" source="../assets/tiles/castleHillLeft.png"/>
+  </tile>
+  <tile id="202">
+   <image width="20" height="20" source="../assets/tiles/castleHillLeft2.png"/>
+  </tile>
+  <tile id="203">
+   <image width="20" height="20" source="../assets/tiles/castleHillRight.png"/>
+  </tile>
+  <tile id="204">
+   <image width="20" height="20" source="../assets/tiles/castleHillRight2.png"/>
+  </tile>
+  <tile id="205">
+   <image width="5" height="20" source="../assets/tiles/castleLedgeLeft.png"/>
+  </tile>
+  <tile id="206">
+   <image width="5" height="20" source="../assets/tiles/castleLedgeRight.png"/>
+  </tile>
+  <tile id="207">
+   <image width="20" height="20" source="../assets/tiles/castleLeft.png"/>
+  </tile>
+  <tile id="208">
+   <image width="20" height="20" source="../assets/tiles/castleMid.png"/>
+  </tile>
+  <tile id="209">
+   <image width="20" height="20" source="../assets/tiles/castleRight.png"/>
+  </tile>
+  <tile id="210">
+   <image width="20" height="20" source="../assets/tiles/dirt.png"/>
+  </tile>
+  <tile id="211">
+   <image width="20" height="20" source="../assets/tiles/dirtCenter.png"/>
+  </tile>
+  <tile id="212">
+   <image width="20" height="20" source="../assets/tiles/dirtCenter_rounded.png"/>
+  </tile>
+  <tile id="213">
+   <image width="20" height="20" source="../assets/tiles/dirtCliffLeft.png"/>
+  </tile>
+  <tile id="214">
+   <image width="20" height="20" source="../assets/tiles/dirtCliffLeftAlt.png"/>
+  </tile>
+  <tile id="215">
+   <image width="20" height="20" source="../assets/tiles/dirtCliffRight.png"/>
+  </tile>
+  <tile id="216">
+   <image width="20" height="20" source="../assets/tiles/dirtCliffRightAlt.png"/>
+  </tile>
+  <tile id="217">
+   <image width="20" height="20" source="../assets/tiles/dirtHalf.png"/>
+  </tile>
+  <tile id="218">
+   <image width="20" height="20" source="../assets/tiles/dirtHalfLeft.png"/>
+  </tile>
+  <tile id="219">
+   <image width="20" height="20" source="../assets/tiles/dirtHalfMid.png"/>
+  </tile>
+  <tile id="220">
+   <image width="20" height="20" source="../assets/tiles/dirtHalfRight.png"/>
+  </tile>
+  <tile id="221">
+   <image width="20" height="20" source="../assets/tiles/dirtHillLeft.png"/>
+  </tile>
+  <tile id="222">
+   <image width="20" height="20" source="../assets/tiles/dirtHillLeft2.png"/>
+  </tile>
+  <tile id="223">
+   <image width="20" height="20" source="../assets/tiles/dirtHillRight.png"/>
+  </tile>
+  <tile id="224">
+   <image width="20" height="20" source="../assets/tiles/dirtHillRight2.png"/>
+  </tile>
+  <tile id="225">
+   <image width="6" height="20" source="../assets/tiles/dirtLedgeLeft.png"/>
+  </tile>
+  <tile id="226">
+   <image width="6" height="20" source="../assets/tiles/dirtLedgeRight.png"/>
+  </tile>
+  <tile id="227">
+   <image width="20" height="20" source="../assets/tiles/dirtLeft.png"/>
+  </tile>
+  <tile id="228">
+   <image width="20" height="20" source="../assets/tiles/dirtMid.png"/>
+  </tile>
+  <tile id="229">
+   <image width="20" height="20" source="../assets/tiles/dirtRight.png"/>
+  </tile>
+  <tile id="230">
+   <image width="20" height="20" source="../assets/tiles/door_closedMid.png"/>
+  </tile>
+  <tile id="231">
+   <image width="20" height="20" source="../assets/tiles/door_closedTop.png"/>
+  </tile>
+  <tile id="232">
+   <image width="20" height="20" source="../assets/tiles/door_openMid.png"/>
+  </tile>
+  <tile id="233">
+   <image width="20" height="20" source="../assets/tiles/door_openTop.png"/>
+  </tile>
+  <tile id="234">
+   <image width="20" height="20" source="../assets/tiles/fence.png"/>
+  </tile>
+  <tile id="235">
+   <image width="20" height="20" source="../assets/tiles/fenceBroken.png"/>
+  </tile>
+  <tile id="236">
+   <image width="20" height="20" source="../assets/tiles/grass.png"/>
+  </tile>
+  <tile id="237">
+   <image width="20" height="20" source="../assets/tiles/grassCenter.png"/>
+  </tile>
+  <tile id="238">
+   <image width="20" height="20" source="../assets/tiles/grassCenter_rounded.png"/>
+  </tile>
+  <tile id="239">
+   <image width="20" height="20" source="../assets/tiles/grassCliffLeft.png"/>
+  </tile>
+  <tile id="240">
+   <image width="20" height="20" source="../assets/tiles/grassCliffLeftAlt.png"/>
+  </tile>
+  <tile id="241">
+   <image width="20" height="20" source="../assets/tiles/grassCliffRight.png"/>
+  </tile>
+  <tile id="242">
+   <image width="20" height="20" source="../assets/tiles/grassCliffRightAlt.png"/>
+  </tile>
+  <tile id="243">
+   <image width="20" height="20" source="../assets/tiles/grassHalf.png"/>
+  </tile>
+  <tile id="244">
+   <image width="20" height="20" source="../assets/tiles/grassHalfLeft.png"/>
+  </tile>
+  <tile id="245">
+   <image width="20" height="20" source="../assets/tiles/grassHalfMid.png"/>
+  </tile>
+  <tile id="246">
+   <image width="20" height="20" source="../assets/tiles/grassHalfRight.png"/>
+  </tile>
+  <tile id="247">
+   <image width="20" height="20" source="../assets/tiles/grassHillLeft.png"/>
+  </tile>
+  <tile id="248">
+   <image width="20" height="20" source="../assets/tiles/grassHillLeft2.png"/>
+  </tile>
+  <tile id="249">
+   <image width="20" height="20" source="../assets/tiles/grassHillRight.png"/>
+  </tile>
+  <tile id="250">
+   <image width="20" height="20" source="../assets/tiles/grassHillRight2.png"/>
+  </tile>
+  <tile id="251">
+   <image width="4" height="20" source="../assets/tiles/grassLedgeLeft.png"/>
+  </tile>
+  <tile id="252">
+   <image width="4" height="20" source="../assets/tiles/grassLedgeRight.png"/>
+  </tile>
+  <tile id="253">
+   <image width="20" height="20" source="../assets/tiles/grassLeft.png"/>
+  </tile>
+  <tile id="254">
+   <image width="20" height="20" source="../assets/tiles/grassMid.png"/>
+  </tile>
+  <tile id="255">
+   <image width="20" height="20" source="../assets/tiles/grassRight.png"/>
+  </tile>
+  <tile id="256">
+   <image width="20" height="61" source="../assets/tiles/hill_large.png"/>
+  </tile>
+  <tile id="257">
+   <image width="20" height="61" source="../assets/tiles/hill_largeAlt.png"/>
+  </tile>
+  <tile id="258">
+   <image width="20" height="44" source="../assets/tiles/hill_small.png"/>
+  </tile>
+  <tile id="259">
+   <image width="20" height="44" source="../assets/tiles/hill_smallAlt.png"/>
+  </tile>
+  <tile id="260">
+   <image width="20" height="20" source="../assets/tiles/ladder_mid.png"/>
+  </tile>
+  <tile id="261">
+   <image width="20" height="20" source="../assets/tiles/ladder_top.png"/>
+  </tile>
+  <tile id="262">
+   <image width="20" height="20" source="../assets/tiles/liquidLava.png"/>
+  </tile>
+  <tile id="263">
+   <image width="20" height="20" source="../assets/tiles/liquidLavaTop.png"/>
+  </tile>
+  <tile id="264">
+   <image width="20" height="20" source="../assets/tiles/liquidLavaTop_mid.png"/>
+  </tile>
+  <tile id="265">
+   <image width="20" height="20" source="../assets/tiles/liquidWater.png"/>
+  </tile>
+  <tile id="266">
+   <image width="20" height="20" source="../assets/tiles/liquidWaterTop.png"/>
+  </tile>
+  <tile id="267">
+   <image width="20" height="20" source="../assets/tiles/liquidWaterTop_mid.png"/>
+  </tile>
+  <tile id="268">
+   <image width="20" height="20" source="../assets/tiles/lock_blue.png"/>
+  </tile>
+  <tile id="269">
+   <image width="20" height="20" source="../assets/tiles/lock_green.png"/>
+  </tile>
+  <tile id="270">
+   <image width="20" height="20" source="../assets/tiles/lock_red.png"/>
+  </tile>
+  <tile id="271">
+   <image width="20" height="20" source="../assets/tiles/lock_yellow.png"/>
+  </tile>
+  <tile id="272">
+   <image width="20" height="20" source="../assets/tiles/rockHillLeft.png"/>
+  </tile>
+  <tile id="273">
+   <image width="20" height="20" source="../assets/tiles/rockHillRight.png"/>
+  </tile>
+  <tile id="274">
+   <image width="6" height="20" source="../assets/tiles/ropeAttached.png"/>
+  </tile>
+  <tile id="275">
+   <image width="20" height="3" source="../assets/tiles/ropeHorizontal.png"/>
+  </tile>
+  <tile id="276">
+   <image width="3" height="20" source="../assets/tiles/ropeVertical.png"/>
+  </tile>
+  <tile id="277">
+   <image width="20" height="20" source="../assets/tiles/sand.png"/>
+  </tile>
+  <tile id="278">
+   <image width="20" height="20" source="../assets/tiles/sandCenter.png"/>
+  </tile>
+  <tile id="279">
+   <image width="20" height="20" source="../assets/tiles/sandCenter_rounded.png"/>
+  </tile>
+  <tile id="280">
+   <image width="20" height="20" source="../assets/tiles/sandCliffLeft.png"/>
+  </tile>
+  <tile id="281">
+   <image width="20" height="20" source="../assets/tiles/sandCliffLeftAlt.png"/>
+  </tile>
+  <tile id="282">
+   <image width="20" height="20" source="../assets/tiles/sandCliffRight.png"/>
+  </tile>
+  <tile id="283">
+   <image width="20" height="20" source="../assets/tiles/sandCliffRightAlt.png"/>
+  </tile>
+  <tile id="284">
+   <image width="20" height="20" source="../assets/tiles/sandHalf.png"/>
+  </tile>
+  <tile id="285">
+   <image width="20" height="20" source="../assets/tiles/sandHalfLeft.png"/>
+  </tile>
+  <tile id="286">
+   <image width="20" height="20" source="../assets/tiles/sandHalfMid.png"/>
+  </tile>
+  <tile id="287">
+   <image width="20" height="20" source="../assets/tiles/sandHalfRight.png"/>
+  </tile>
+  <tile id="288">
+   <image width="20" height="20" source="../assets/tiles/sandHillLeft.png"/>
+  </tile>
+  <tile id="289">
+   <image width="20" height="20" source="../assets/tiles/sandHillLeft2.png"/>
+  </tile>
+  <tile id="290">
+   <image width="20" height="20" source="../assets/tiles/sandHillRight.png"/>
+  </tile>
+  <tile id="291">
+   <image width="20" height="20" source="../assets/tiles/sandHillRight2.png"/>
+  </tile>
+  <tile id="292">
+   <image width="6" height="20" source="../assets/tiles/sandLedgeLeft.png"/>
+  </tile>
+  <tile id="293">
+   <image width="6" height="20" source="../assets/tiles/sandLedgeRight.png"/>
+  </tile>
+  <tile id="294">
+   <image width="20" height="20" source="../assets/tiles/sandLeft.png"/>
+  </tile>
+  <tile id="295">
+   <image width="20" height="20" source="../assets/tiles/sandMid.png"/>
+  </tile>
+  <tile id="296">
+   <image width="20" height="20" source="../assets/tiles/sandRight.png"/>
+  </tile>
+  <tile id="297">
+   <image width="20" height="20" source="../assets/tiles/sign.png"/>
+  </tile>
+  <tile id="298">
+   <image width="20" height="20" source="../assets/tiles/signExit.png"/>
+  </tile>
+  <tile id="299">
+   <image width="20" height="20" source="../assets/tiles/signLeft.png"/>
+  </tile>
+  <tile id="300">
+   <image width="20" height="20" source="../assets/tiles/signRight.png"/>
+  </tile>
+  <tile id="301">
+   <image width="20" height="20" source="../assets/tiles/snow.png"/>
+  </tile>
+  <tile id="302">
+   <image width="20" height="20" source="../assets/tiles/snowCenter.png"/>
+  </tile>
+  <tile id="303">
+   <image width="20" height="20" source="../assets/tiles/snowCenter_rounded.png"/>
+  </tile>
+  <tile id="304">
+   <image width="20" height="20" source="../assets/tiles/snowCliffLeft.png"/>
+  </tile>
+  <tile id="305">
+   <image width="20" height="20" source="../assets/tiles/snowCliffLeftAlt.png"/>
+  </tile>
+  <tile id="306">
+   <image width="20" height="20" source="../assets/tiles/snowCliffRight.png"/>
+  </tile>
+  <tile id="307">
+   <image width="20" height="20" source="../assets/tiles/snowCliffRightAlt.png"/>
+  </tile>
+  <tile id="308">
+   <image width="20" height="20" source="../assets/tiles/snowHalf.png"/>
+  </tile>
+  <tile id="309">
+   <image width="20" height="20" source="../assets/tiles/snowHalfLeft.png"/>
+  </tile>
+  <tile id="310">
+   <image width="20" height="20" source="../assets/tiles/snowHalfMid.png"/>
+  </tile>
+  <tile id="311">
+   <image width="20" height="20" source="../assets/tiles/snowHalfRight.png"/>
+  </tile>
+  <tile id="312">
+   <image width="20" height="20" source="../assets/tiles/snowHillLeft.png"/>
+  </tile>
+  <tile id="313">
+   <image width="20" height="20" source="../assets/tiles/snowHillLeft2.png"/>
+  </tile>
+  <tile id="314">
+   <image width="20" height="20" source="../assets/tiles/snowHillRight.png"/>
+  </tile>
+  <tile id="315">
+   <image width="20" height="20" source="../assets/tiles/snowHillRight2.png"/>
+  </tile>
+  <tile id="316">
+   <image width="6" height="20" source="../assets/tiles/snowLedgeLeft.png"/>
+  </tile>
+  <tile id="317">
+   <image width="6" height="20" source="../assets/tiles/snowLedgeRight.png"/>
+  </tile>
+  <tile id="318">
+   <image width="20" height="20" source="../assets/tiles/snowLeft.png"/>
+  </tile>
+  <tile id="319">
+   <image width="20" height="20" source="../assets/tiles/snowMid.png"/>
+  </tile>
+  <tile id="320">
+   <image width="20" height="20" source="../assets/tiles/snowRight.png"/>
+  </tile>
+  <tile id="321">
+   <image width="20" height="20" source="../assets/tiles/stone.png"/>
+  </tile>
+  <tile id="322">
+   <image width="20" height="20" source="../assets/tiles/stoneCenter.png"/>
+  </tile>
+  <tile id="323">
+   <image width="20" height="20" source="../assets/tiles/stoneCenter_rounded.png"/>
+  </tile>
+  <tile id="324">
+   <image width="20" height="20" source="../assets/tiles/stoneCliffLeft.png"/>
+  </tile>
+  <tile id="325">
+   <image width="20" height="20" source="../assets/tiles/stoneCliffLeftAlt.png"/>
+  </tile>
+  <tile id="326">
+   <image width="20" height="20" source="../assets/tiles/stoneCliffRight.png"/>
+  </tile>
+  <tile id="327">
+   <image width="20" height="20" source="../assets/tiles/stoneCliffRightAlt.png"/>
+  </tile>
+  <tile id="328">
+   <image width="20" height="20" source="../assets/tiles/stoneHalf.png"/>
+  </tile>
+  <tile id="329">
+   <image width="20" height="20" source="../assets/tiles/stoneHalfLeft.png"/>
+  </tile>
+  <tile id="330">
+   <image width="20" height="20" source="../assets/tiles/stoneHalfMid.png"/>
+  </tile>
+  <tile id="331">
+   <image width="20" height="20" source="../assets/tiles/stoneHalfRight.png"/>
+  </tile>
+  <tile id="332">
+   <image width="20" height="20" source="../assets/tiles/stoneHillLeft2.png"/>
+  </tile>
+  <tile id="333">
+   <image width="20" height="20" source="../assets/tiles/stoneHillRight2.png"/>
+  </tile>
+  <tile id="334">
+   <image width="4" height="20" source="../assets/tiles/stoneLedgeLeft.png"/>
+  </tile>
+  <tile id="335">
+   <image width="4" height="20" source="../assets/tiles/stoneLedgeRight.png"/>
+  </tile>
+  <tile id="336">
+   <image width="20" height="20" source="../assets/tiles/stoneLeft.png"/>
+  </tile>
+  <tile id="337">
+   <image width="20" height="20" source="../assets/tiles/stoneMid.png"/>
+  </tile>
+  <tile id="338">
+   <image width="20" height="20" source="../assets/tiles/stoneRight.png"/>
+  </tile>
+  <tile id="339">
+   <image width="20" height="20" source="../assets/tiles/stoneWall.png"/>
+  </tile>
+  <tile id="340">
+   <image width="20" height="20" source="../assets/tiles/tochLit.png"/>
+  </tile>
+  <tile id="341">
+   <image width="20" height="20" source="../assets/tiles/tochLit2.png"/>
+  </tile>
+  <tile id="342">
+   <image width="20" height="20" source="../assets/tiles/torch.png"/>
+  </tile>
+  <tile id="343">
+   <image width="20" height="20" source="../assets/tiles/window.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="345" name="Backgrounds" tilewidth="20" tileheight="20" tilecount="2" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="20" height="20" source="../assets/background/bg.png"/>
+  </tile>
+  <tile id="1">
+   <image width="20" height="20" source="../assets/background/bg_castle.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="347" name="HUD" tilewidth="20" tileheight="28" tilecount="33" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="20" height="25" source="../assets/HUD/hud_0.png"/>
+  </tile>
+  <tile id="1">
+   <image width="20" height="28" source="../assets/HUD/hud_1.png"/>
+  </tile>
+  <tile id="2">
+   <image width="20" height="24" source="../assets/HUD/hud_2.png"/>
+  </tile>
+  <tile id="3">
+   <image width="20" height="27" source="../assets/HUD/hud_3.png"/>
+  </tile>
+  <tile id="4">
+   <image width="20" height="26" source="../assets/HUD/hud_4.png"/>
+  </tile>
+  <tile id="5">
+   <image width="20" height="27" source="../assets/HUD/hud_5.png"/>
+  </tile>
+  <tile id="6">
+   <image width="20" height="25" source="../assets/HUD/hud_6.png"/>
+  </tile>
+  <tile id="7">
+   <image width="20" height="24" source="../assets/HUD/hud_7.png"/>
+  </tile>
+  <tile id="8">
+   <image width="20" height="25" source="../assets/HUD/hud_8.png"/>
+  </tile>
+  <tile id="9">
+   <image width="20" height="24" source="../assets/HUD/hud_9.png"/>
+  </tile>
+  <tile id="10">
+   <image width="20" height="20" source="../assets/HUD/hud_coins.png"/>
+  </tile>
+  <tile id="11">
+   <image width="20" height="16" source="../assets/HUD/hud_gem_blue.png"/>
+  </tile>
+  <tile id="12">
+   <image width="20" height="16" source="../assets/HUD/hud_gem_green.png"/>
+  </tile>
+  <tile id="13">
+   <image width="20" height="16" source="../assets/HUD/hud_gem_red.png"/>
+  </tile>
+  <tile id="14">
+   <image width="20" height="16" source="../assets/HUD/hud_gem_yellow.png"/>
+  </tile>
+  <tile id="15">
+   <image width="20" height="17" source="../assets/HUD/hud_heartEmpty.png"/>
+  </tile>
+  <tile id="16">
+   <image width="20" height="17" source="../assets/HUD/hud_heartFull.png"/>
+  </tile>
+  <tile id="17">
+   <image width="20" height="17" source="../assets/HUD/hud_heartHalf.png"/>
+  </tile>
+  <tile id="18">
+   <image width="20" height="18" source="../assets/HUD/hud_keyBlue.png"/>
+  </tile>
+  <tile id="19">
+   <image width="20" height="18" source="../assets/HUD/hud_keyBlue_disabled.png"/>
+  </tile>
+  <tile id="20">
+   <image width="20" height="18" source="../assets/HUD/hud_keyGreem_disabled.png"/>
+  </tile>
+  <tile id="21">
+   <image width="20" height="18" source="../assets/HUD/hud_keyGreen.png"/>
+  </tile>
+  <tile id="22">
+   <image width="20" height="18" source="../assets/HUD/hud_keyRed.png"/>
+  </tile>
+  <tile id="23">
+   <image width="20" height="18" source="../assets/HUD/hud_keyRed_disabled.png"/>
+  </tile>
+  <tile id="24">
+   <image width="20" height="18" source="../assets/HUD/hud_keyYellow.png"/>
+  </tile>
+  <tile id="25">
+   <image width="20" height="18" source="../assets/HUD/hud_keyYellow_disabled.png"/>
+  </tile>
+  <tile id="26">
+   <image width="20" height="20" source="../assets/HUD/hud_p1.png"/>
+  </tile>
+  <tile id="27">
+   <image width="20" height="20" source="../assets/HUD/hud_p1Alt.png"/>
+  </tile>
+  <tile id="28">
+   <image width="20" height="20" source="../assets/HUD/hud_p2.png"/>
+  </tile>
+  <tile id="29">
+   <image width="20" height="20" source="../assets/HUD/hud_p2Alt.png"/>
+  </tile>
+  <tile id="30">
+   <image width="20" height="20" source="../assets/HUD/hud_p3.png"/>
+  </tile>
+  <tile id="31">
+   <image width="20" height="20" source="../assets/HUD/hud_p3Alt.png"/>
+  </tile>
+  <tile id="32">
+   <image width="20" height="19" source="../assets/HUD/hud_x.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="380" name="Items" tilewidth="20" tileheight="20" tilecount="59" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="20" height="20" source="../assets/items/bomb.png"/>
+  </tile>
+  <tile id="1">
+   <image width="20" height="20" source="../assets/items/bombFlash.png"/>
+  </tile>
+  <tile id="2">
+   <image width="20" height="20" source="../assets/items/bush.png"/>
+  </tile>
+  <tile id="3">
+   <image width="20" height="20" source="../assets/items/buttonBlue.png"/>
+  </tile>
+  <tile id="4">
+   <image width="20" height="20" source="../assets/items/buttonBlue_pressed.png"/>
+  </tile>
+  <tile id="5">
+   <image width="20" height="20" source="../assets/items/buttonGreen.png"/>
+  </tile>
+  <tile id="6">
+   <image width="20" height="20" source="../assets/items/buttonGreen_pressed.png"/>
+  </tile>
+  <tile id="7">
+   <image width="20" height="20" source="../assets/items/buttonRed.png"/>
+  </tile>
+  <tile id="8">
+   <image width="20" height="20" source="../assets/items/buttonRed_pressed.png"/>
+  </tile>
+  <tile id="9">
+   <image width="20" height="20" source="../assets/items/buttonYellow.png"/>
+  </tile>
+  <tile id="10">
+   <image width="20" height="20" source="../assets/items/buttonYellow_pressed.png"/>
+  </tile>
+  <tile id="11">
+   <image width="20" height="20" source="../assets/items/cactus.png"/>
+  </tile>
+  <tile id="12">
+   <image width="20" height="20" source="../assets/items/chain.png"/>
+  </tile>
+  <tile id="13">
+   <image width="20" height="11" source="../assets/items/cloud1.png"/>
+  </tile>
+  <tile id="14">
+   <image width="20" height="11" source="../assets/items/cloud2.png"/>
+  </tile>
+  <tile id="15">
+   <image width="20" height="11" source="../assets/items/cloud3.png"/>
+  </tile>
+  <tile id="16">
+   <image width="20" height="20" source="../assets/items/coinBronze.png"/>
+  </tile>
+  <tile id="17">
+   <image width="20" height="20" source="../assets/items/coinGold.png"/>
+  </tile>
+  <tile id="18">
+   <image width="20" height="20" source="../assets/items/coinSilver.png"/>
+  </tile>
+  <tile id="19">
+   <image width="20" height="20" source="../assets/items/fireball.png"/>
+  </tile>
+  <tile id="20">
+   <image width="20" height="20" source="../assets/items/flagBlue.png"/>
+  </tile>
+  <tile id="21">
+   <image width="20" height="20" source="../assets/items/flagBlue2.png"/>
+  </tile>
+  <tile id="22">
+   <image width="20" height="20" source="../assets/items/flagBlueHanging.png"/>
+  </tile>
+  <tile id="23">
+   <image width="20" height="20" source="../assets/items/flagGreen.png"/>
+  </tile>
+  <tile id="24">
+   <image width="20" height="20" source="../assets/items/flagGreen2.png"/>
+  </tile>
+  <tile id="25">
+   <image width="20" height="20" source="../assets/items/flagGreenHanging.png"/>
+  </tile>
+  <tile id="26">
+   <image width="20" height="20" source="../assets/items/flagRed.png"/>
+  </tile>
+  <tile id="27">
+   <image width="20" height="20" source="../assets/items/flagRed2.png"/>
+  </tile>
+  <tile id="28">
+   <image width="20" height="20" source="../assets/items/flagRedHanging.png"/>
+  </tile>
+  <tile id="29">
+   <image width="20" height="20" source="../assets/items/flagYellow.png"/>
+  </tile>
+  <tile id="30">
+   <image width="20" height="20" source="../assets/items/flagYellow2.png"/>
+  </tile>
+  <tile id="31">
+   <image width="20" height="20" source="../assets/items/flagYellowHanging.png"/>
+  </tile>
+  <tile id="32">
+   <image width="20" height="20" source="../assets/items/gemBlue.png"/>
+  </tile>
+  <tile id="33">
+   <image width="20" height="20" source="../assets/items/gemGreen.png"/>
+  </tile>
+  <tile id="34">
+   <image width="20" height="20" source="../assets/items/gemRed.png"/>
+  </tile>
+  <tile id="35">
+   <image width="20" height="20" source="../assets/items/gemYellow.png"/>
+  </tile>
+  <tile id="36">
+   <image width="20" height="20" source="../assets/items/keyBlue.png"/>
+  </tile>
+  <tile id="37">
+   <image width="20" height="20" source="../assets/items/keyGreen.png"/>
+  </tile>
+  <tile id="38">
+   <image width="20" height="20" source="../assets/items/keyRed.png"/>
+  </tile>
+  <tile id="39">
+   <image width="20" height="20" source="../assets/items/keyYellow.png"/>
+  </tile>
+  <tile id="40">
+   <image width="20" height="20" source="../assets/items/mushroomBrown.png"/>
+  </tile>
+  <tile id="41">
+   <image width="20" height="20" source="../assets/items/mushroomRed.png"/>
+  </tile>
+  <tile id="42">
+   <image width="20" height="15" source="../assets/items/particleBrick1a.png"/>
+  </tile>
+  <tile id="43">
+   <image width="20" height="20" source="../assets/items/particleBrick1b.png"/>
+  </tile>
+  <tile id="44">
+   <image width="20" height="15" source="../assets/items/particleBrick2a.png"/>
+  </tile>
+  <tile id="45">
+   <image width="20" height="20" source="../assets/items/particleBrick2b.png"/>
+  </tile>
+  <tile id="46">
+   <image width="20" height="20" source="../assets/items/plant.png"/>
+  </tile>
+  <tile id="47">
+   <image width="20" height="20" source="../assets/items/plantPurple.png"/>
+  </tile>
+  <tile id="48">
+   <image width="20" height="20" source="../assets/items/rock.png"/>
+  </tile>
+  <tile id="49">
+   <image width="20" height="20" source="../assets/items/snowhill.png"/>
+  </tile>
+  <tile id="50">
+   <image width="20" height="20" source="../assets/items/spikes.png"/>
+  </tile>
+  <tile id="51">
+   <image width="20" height="20" source="../assets/items/springboardDown.png"/>
+  </tile>
+  <tile id="52">
+   <image width="20" height="20" source="../assets/items/springboardUp.png"/>
+  </tile>
+  <tile id="53">
+   <image width="20" height="20" source="../assets/items/star.png"/>
+  </tile>
+  <tile id="54">
+   <image width="20" height="20" source="../assets/items/switchLeft.png"/>
+  </tile>
+  <tile id="55">
+   <image width="20" height="20" source="../assets/items/switchMid.png"/>
+  </tile>
+  <tile id="56">
+   <image width="20" height="20" source="../assets/items/switchRight.png"/>
+  </tile>
+  <tile id="57">
+   <image width="20" height="20" source="../assets/items/weight.png"/>
+  </tile>
+  <tile id="58">
+   <image width="20" height="20" source="../assets/items/weightChained.png"/>
+  </tile>
+ </tileset>
+ <tileset firstgid="439" name="Candy" tilewidth="20" tileheight="20" tilecount="93" columns="0">
+  <grid orientation="orthogonal" width="1" height="1"/>
+  <tile id="0">
+   <image width="20" height="20" source="../assets/candy/cake.png"/>
+  </tile>
+  <tile id="1">
+   <image width="20" height="20" source="../assets/candy/cakeCenter.png"/>
+  </tile>
+  <tile id="2">
+   <image width="20" height="20" source="../assets/candy/cakeCenter_rounded.png"/>
+  </tile>
+  <tile id="3">
+   <image width="20" height="20" source="../assets/candy/cakeCliffLeft.png"/>
+  </tile>
+  <tile id="4">
+   <image width="20" height="20" source="../assets/candy/cakeCliffLeftAlt.png"/>
+  </tile>
+  <tile id="5">
+   <image width="20" height="20" source="../assets/candy/cakeCliffRight.png"/>
+  </tile>
+  <tile id="6">
+   <image width="20" height="20" source="../assets/candy/cakeCliffRightAlt.png"/>
+  </tile>
+  <tile id="7">
+   <image width="20" height="20" source="../assets/candy/cakeHalf.png"/>
+  </tile>
+  <tile id="8">
+   <image width="20" height="20" source="../assets/candy/cakeHalfAlt.png"/>
+  </tile>
+  <tile id="9">
+   <image width="20" height="20" source="../assets/candy/cakeHalfAltLeft.png"/>
+  </tile>
+  <tile id="10">
+   <image width="20" height="20" source="../assets/candy/cakeHalfAltMid.png"/>
+  </tile>
+  <tile id="11">
+   <image width="20" height="20" source="../assets/candy/cakeHalfAltRight.png"/>
+  </tile>
+  <tile id="12">
+   <image width="20" height="20" source="../assets/candy/cakeHalfLeft.png"/>
+  </tile>
+  <tile id="13">
+   <image width="20" height="20" source="../assets/candy/cakeHalfMid.png"/>
+  </tile>
+  <tile id="14">
+   <image width="20" height="20" source="../assets/candy/cakeHalfRight.png"/>
+  </tile>
+  <tile id="15">
+   <image width="20" height="20" source="../assets/candy/cakeHillLeft.png"/>
+  </tile>
+  <tile id="16">
+   <image width="20" height="20" source="../assets/candy/cakeHillLeft2.png"/>
+  </tile>
+  <tile id="17">
+   <image width="20" height="20" source="../assets/candy/cakeHillRight.png"/>
+  </tile>
+  <tile id="18">
+   <image width="20" height="20" source="../assets/candy/cakeHillRight2.png"/>
+  </tile>
+  <tile id="19">
+   <image width="20" height="20" source="../assets/candy/cakeLeft.png"/>
+  </tile>
+  <tile id="20">
+   <image width="20" height="20" source="../assets/candy/cakeMid.png"/>
+  </tile>
+  <tile id="21">
+   <image width="20" height="20" source="../assets/candy/cakeRight.png"/>
+  </tile>
+  <tile id="22">
+   <image width="20" height="20" source="../assets/candy/candyBlue.png"/>
+  </tile>
+  <tile id="23">
+   <image width="20" height="20" source="../assets/candy/candyGreen.png"/>
+  </tile>
+  <tile id="24">
+   <image width="20" height="20" source="../assets/candy/candyRed.png"/>
+  </tile>
+  <tile id="25">
+   <image width="20" height="20" source="../assets/candy/candyYellow.png"/>
+  </tile>
+  <tile id="26">
+   <image width="20" height="20" source="../assets/candy/canePink.png"/>
+  </tile>
+  <tile id="27">
+   <image width="20" height="20" source="../assets/candy/canePinkSmall.png"/>
+  </tile>
+  <tile id="28">
+   <image width="20" height="20" source="../assets/candy/canePinkTop.png"/>
+  </tile>
+  <tile id="29">
+   <image width="20" height="20" source="../assets/candy/canePinkTopAlt.png"/>
+  </tile>
+  <tile id="30">
+   <image width="20" height="20" source="../assets/candy/cherry.png"/>
+  </tile>
+  <tile id="31">
+   <image width="20" height="20" source="../assets/candy/choco.png"/>
+  </tile>
+  <tile id="32">
+   <image width="20" height="20" source="../assets/candy/chocoCenter.png"/>
+  </tile>
+  <tile id="33">
+   <image width="20" height="20" source="../assets/candy/chocoCenter_rounded.png"/>
+  </tile>
+  <tile id="34">
+   <image width="20" height="20" source="../assets/candy/chocoCliffLeft.png"/>
+  </tile>
+  <tile id="35">
+   <image width="20" height="20" source="../assets/candy/chocoCliffLeftAlt.png"/>
+  </tile>
+  <tile id="36">
+   <image width="20" height="20" source="../assets/candy/chocoCliffRight.png"/>
+  </tile>
+  <tile id="37">
+   <image width="20" height="20" source="../assets/candy/chocoCliffRightAlt.png"/>
+  </tile>
+  <tile id="38">
+   <image width="20" height="20" source="../assets/candy/chocoHalf.png"/>
+  </tile>
+  <tile id="39">
+   <image width="20" height="20" source="../assets/candy/chocoHalfAlt.png"/>
+  </tile>
+  <tile id="40">
+   <image width="20" height="20" source="../assets/candy/chocoHalfAltLeft.png"/>
+  </tile>
+  <tile id="41">
+   <image width="20" height="20" source="../assets/candy/chocoHalfAltMid.png"/>
+  </tile>
+  <tile id="42">
+   <image width="20" height="20" source="../assets/candy/chocoHalfAltRight.png"/>
+  </tile>
+  <tile id="43">
+   <image width="20" height="20" source="../assets/candy/chocoHalfLeft.png"/>
+  </tile>
+  <tile id="44">
+   <image width="20" height="20" source="../assets/candy/chocoHalfMid.png"/>
+  </tile>
+  <tile id="45">
+   <image width="20" height="20" source="../assets/candy/chocoHalfRight.png"/>
+  </tile>
+  <tile id="46">
+   <image width="20" height="20" source="../assets/candy/chocoHillLeft.png"/>
+  </tile>
+  <tile id="47">
+   <image width="20" height="20" source="../assets/candy/chocoHillLeft2.png"/>
+  </tile>
+  <tile id="48">
+   <image width="20" height="20" source="../assets/candy/chocoHillRight.png"/>
+  </tile>
+  <tile id="49">
+   <image width="20" height="20" source="../assets/candy/chocoHillRight2.png"/>
+  </tile>
+  <tile id="50">
+   <image width="20" height="20" source="../assets/candy/chocoLedgeLeft.png"/>
+  </tile>
+  <tile id="51">
+   <image width="20" height="20" source="../assets/candy/chocoLedgeRight.png"/>
+  </tile>
+  <tile id="52">
+   <image width="20" height="20" source="../assets/candy/chocoLeft.png"/>
+  </tile>
+  <tile id="53">
+   <image width="20" height="20" source="../assets/candy/chocoMid.png"/>
+  </tile>
+  <tile id="54">
+   <image width="20" height="20" source="../assets/candy/chocoRight.png"/>
+  </tile>
+  <tile id="55">
+   <image width="20" height="20" source="../assets/candy/cookieBrown.png"/>
+  </tile>
+  <tile id="56">
+   <image width="20" height="20" source="../assets/candy/cookieChoco.png"/>
+  </tile>
+  <tile id="57">
+   <image width="20" height="20" source="../assets/candy/cookiePink.png"/>
+  </tile>
+  <tile id="58">
+   <image width="20" height="20" source="../assets/candy/creamChoco.png"/>
+  </tile>
+  <tile id="59">
+   <image width="20" height="20" source="../assets/candy/creamMocca.png"/>
+  </tile>
+  <tile id="60">
+   <image width="20" height="20" source="../assets/candy/creamPink.png"/>
+  </tile>
+  <tile id="61">
+   <image width="20" height="20" source="../assets/candy/creamVanilla.png"/>
+  </tile>
+  <tile id="62">
+   <image width="20" height="20" source="../assets/candy/cupCake.png"/>
+  </tile>
+  <tile id="63">
+   <image width="20" height="20" source="../assets/candy/gummyWormGreenEnd.png"/>
+  </tile>
+  <tile id="64">
+   <image width="20" height="20" source="../assets/candy/gummyWormGreenHead.png"/>
+  </tile>
+  <tile id="65">
+   <image width="20" height="20" source="../assets/candy/gummyWormGreenMid.png"/>
+  </tile>
+  <tile id="66">
+   <image width="20" height="20" source="../assets/candy/gummyWormRedEnd.png"/>
+  </tile>
+  <tile id="67">
+   <image width="20" height="20" source="../assets/candy/gummyWormRedHead.png"/>
+  </tile>
+  <tile id="68">
+   <image width="20" height="20" source="../assets/candy/gummyWormRedMid.png"/>
+  </tile>
+  <tile id="69">
+   <image width="20" height="20" source="../assets/candy/heart.png"/>
+  </tile>
+  <tile id="70">
+   <image width="20" height="20" source="../assets/candy/hillCaneChoco.png"/>
+  </tile>
+  <tile id="71">
+   <image width="20" height="20" source="../assets/candy/hillCaneChocoTop.png"/>
+  </tile>
+  <tile id="72">
+   <image width="20" height="20" source="../assets/candy/hillCaneGreen.png"/>
+  </tile>
+  <tile id="73">
+   <image width="20" height="20" source="../assets/candy/hillCaneGreenTop.png"/>
+  </tile>
+  <tile id="74">
+   <image width="20" height="20" source="../assets/candy/hillCanePink.png"/>
+  </tile>
+  <tile id="75">
+   <image width="20" height="20" source="../assets/candy/hillCanePinkTop.png"/>
+  </tile>
+  <tile id="76">
+   <image width="20" height="20" source="../assets/candy/hillCaneRed.png"/>
+  </tile>
+  <tile id="77">
+   <image width="20" height="20" source="../assets/candy/hillCaneRedTop.png"/>
+  </tile>
+  <tile id="78">
+   <image width="20" height="20" source="../assets/candy/lollipopBase.png"/>
+  </tile>
+  <tile id="79">
+   <image width="20" height="20" source="../assets/candy/lollipopBaseBeige.png"/>
+  </tile>
+  <tile id="80">
+   <image width="20" height="20" source="../assets/candy/lollipopBaseBrown.png"/>
+  </tile>
+  <tile id="81">
+   <image width="20" height="20" source="../assets/candy/lollipopBaseCake.png"/>
+  </tile>
+  <tile id="82">
+   <image width="20" height="20" source="../assets/candy/lollipopBasePink.png"/>
+  </tile>
+  <tile id="83">
+   <image width="20" height="20" source="../assets/candy/lollipopFruitGreen.png"/>
+  </tile>
+  <tile id="84">
+   <image width="20" height="20" source="../assets/candy/lollipopFruitRed.png"/>
+  </tile>
+  <tile id="85">
+   <image width="20" height="20" source="../assets/candy/lollipopFruitYellow.png"/>
+  </tile>
+  <tile id="86">
+   <image width="20" height="20" source="../assets/candy/lollipopGreen.png"/>
+  </tile>
+  <tile id="87">
+   <image width="20" height="20" source="../assets/candy/lollipopRed.png"/>
+  </tile>
+  <tile id="88">
+   <image width="20" height="20" source="../assets/candy/lollipopWhiteGreen.png"/>
+  </tile>
+  <tile id="89">
+   <image width="20" height="20" source="../assets/candy/lollipopWhiteRed.png"/>
+  </tile>
+  <tile id="90">
+   <image width="20" height="20" source="../assets/candy/waffleChoco.png"/>
+  </tile>
+  <tile id="91">
+   <image width="20" height="20" source="../assets/candy/wafflePink.png"/>
+  </tile>
+  <tile id="92">
+   <image width="20" height="20" source="../assets/candy/waffleWhite.png"/>
+  </tile>
+ </tileset>
+ <layer name="background" width="128" height="32" locked="1">
+  <data encoding="csv">
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,
+345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345,345
+</data>
+ </layer>
+ <layer name="background_items" width="128" height="32" locked="1">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,301,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <layer name="map" width="128" height="32">
+  <data encoding="csv">
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,459,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,498,497,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,501,501,0,0,0,0,0,0,0,0,0,0,0,0,529,0,0,0,0,0,0,0,0,0,0,529,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,459,459,459,459,459,459,456,0,0,0,0,0,0,494,495,494,495,494,495,494,0,0,0,0,0,0,0,454,459,459,459,459,0,0,0,0,0,459,459,459,459,459,459,459,459,459,459,459,459,459,459,459,459,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,440,440,440,440,440,440,457,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,459,455,440,440,440,440,0,0,0,0,0,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,0,0,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,440,440,440,440,440,440,440,457,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,455,440,440,440,440,440,440,0,0,0,0,0,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,454,0,0,0,0,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,440,440,440,440,440,440,440,440,457,459,459,459,459,459,459,459,459,459,459,459,459,459,459,459,455,440,440,440,440,440,440,440,0,0,0,0,0,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,454,0,0,0,0,0,0,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,459,459,459,459,459,459,459,459,459,459,459,459,459,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,456,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,440,440,440,440,440,440,440,440,440,440,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup name="markers" visible="0" offsetx="-141.5" offsety="1">
+  <object id="1" name="level_start" type="level_start" x="292.333" y="469">
+   <point/>
+  </object>
+  <object id="4" name="level_boundary" type="level_boundary" x="260" y="0" width="940" height="640"/>
+ </objectgroup>
+</map>
