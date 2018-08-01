@@ -1,8 +1,11 @@
 extern crate sdl2;
 extern crate specs;
+extern crate shred;
 
 #[macro_use]
 extern crate specs_derive;
+#[macro_use]
+extern crate shred_derive;
 
 mod systems;
 mod components;

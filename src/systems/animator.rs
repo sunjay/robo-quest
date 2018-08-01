@@ -3,15 +3,23 @@ use specs::{System, Join, ReadExpect, ReadStorage, WriteStorage};
 use components::{Velocity, Sprite, MovementAnimation};
 use resources::FramesElapsed;
 
+#[derive(SystemData)]
+pub struct AnimatorData<'a> {
+    frames: ReadExpect<'a, FramesElapsed>,
+    velocities: ReadStorage<'a, Velocity>,
+    sprites: WriteStorage<'a, Sprite>,
+    animations: WriteStorage<'a, MovementAnimation>,
+}
+
 pub struct Animator;
 
 impl<'a> System<'a> for Animator {
-    type SystemData = (ReadExpect<'a, FramesElapsed>, ReadStorage<'a, Velocity>, WriteStorage<'a, Sprite>, WriteStorage<'a, MovementAnimation>);
+    type SystemData = AnimatorData<'a>;
 
-    fn run(&mut self, (frames, velocities, mut positions, mut animations): Self::SystemData) {
+    fn run(&mut self, AnimatorData {frames, velocities, mut sprites, mut animations}: Self::SystemData) {
         let FramesElapsed(frames_elapsed) = *frames;
 
-        for (&Velocity(vel), sprite, animation) in (&velocities, &mut positions, &mut animations).join() {
+        for (&Velocity(vel), sprite, animation) in (&velocities, &mut sprites, &mut animations).join() {
             if vel.x() > 0 {
                 // The assumption is that the sprite begins facing right
                 sprite.flip_horizontal = false;

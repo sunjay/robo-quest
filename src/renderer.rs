@@ -19,6 +19,12 @@ use specs::{
 use texture_manager::TextureManager;
 use components::{Position, Sprite};
 
+#[derive(SystemData)]
+pub struct RenderData<'a> {
+    positions: ReadStorage<'a, Position>,
+    sprites: ReadStorage<'a, Sprite>,
+}
+
 pub struct Renderer {
     sdl_context: Sdl,
     /// Required to use images, but not used for anything after it is created
@@ -84,7 +90,7 @@ impl Renderer {
     pub fn render(&mut self, world: &World, textures: &TextureManager) -> Result<(), String> {
         self.canvas.clear();
 
-        let (positions, sprites): (ReadStorage<Position>, ReadStorage<Sprite>) = world.system_data();
+        let RenderData {positions, sprites} = world.system_data();
         //FIXME: The ordering of rendering needs to be made explicit with layering or something
         for (Position(pos), sprite) in (&positions, &sprites).join() {
             let texture = textures.get(sprite.texture_id);
