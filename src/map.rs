@@ -114,6 +114,9 @@ impl LevelMap {
         for layer in layers {
             match layer {
                 Layer::TileLayer {name, data, width: layer_width, height: layer_height, ..} => {
+                    assert_eq!(columns, *layer_width);
+                    assert_eq!(rows, *layer_height);
+
                     let mut tile_rows = Vec::with_capacity(rows as usize);
 
                     let mut row = -1;
