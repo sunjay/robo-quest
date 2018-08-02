@@ -1,26 +1,43 @@
-use std::path::Path;
+use std::{
+    cmp,
+    path::Path,
+};
 
 use sdl2::rect::{Point, Rect};
 
 use texture_manager::{TextureManager, TextureId};
 use level_file::{ReadLevelError, Level, Layer, TileId, Object};
 
+/// A grid of tiles. Must have at least one row and one column.
 #[derive(Debug, Clone)]
 pub struct TileGrid(Vec<Vec<Option<Tile>>>);
 
 impl TileGrid {
-    fn slice_within(&self, tile_width: usize, tile_height: usize, bounds: Rect) -> impl Iterator<Item=&[Option<Tile>]> {
-        let x = bounds.x() as usize;
-        let y = bounds.y() as usize;
+    /// Returns (rows, columns) representing the dimensions of this grid
+    pub fn dimensions(&self) -> (usize, usize) {
+        (self.0.len(), self.0[0].len())
+    }
+
+    pub fn slice_within(&self, tile_width: usize, tile_height: usize, bounds: Rect) -> impl Iterator<Item=&Tile> {
+        // While the user is allowed to ask for tiles within a boundary that starts at negative
+        // coordinates, the top left of the map is defined as (0, 0). That means that we can at
+        // most request tiles up to that top left corner. The calls to `max()` here help enforce
+        // that by making sure we don't convert a negative number to an unsigned type.
+        let x = cmp::max(bounds.x(), 0) as usize;
+        let y = cmp::max(bounds.y(), 0) as usize;
         let width = bounds.width() as usize;
         let height = bounds.height() as usize;
 
-        let start_col = x / tile_width;
-        let start_row = y / tile_height;
-        let end_col = (x + width) / tile_width;
-        let end_row = (y + height) / tile_height;
+        let (rows, columns) = self.dimensions();
+        let clamp_col = |col| cmp::min(cmp::max(col, 0), columns-1);
+        let clamp_row = |row| cmp::min(cmp::max(row, 0), rows-1);
 
-        self.0[start_row..=end_row].iter().map(move |col| &col[start_col..=end_col])
+        let start_col = clamp_col(x / tile_width);
+        let start_row = clamp_row(y / tile_height);
+        let end_col = clamp_col((x + width) / tile_width);
+        let end_row = clamp_row((y + height) / tile_height);
+
+        self.0[start_row..=end_row].iter().flat_map(move |col| col[start_col..=end_col].iter().filter_map(|x| x.as_ref()))
     }
 }
 
@@ -199,15 +216,15 @@ impl LevelMap {
         self.level_boundary
     }
 
-    pub fn background_within(&self, bounds: Rect) -> impl Iterator<Item=&[Option<Tile>]> {
+    pub fn background_within(&self, bounds: Rect) -> impl Iterator<Item=&Tile> {
         self.background.slice_within(self.tile_width, self.tile_height, bounds)
     }
 
-    pub fn background_items_within(&self, bounds: Rect) -> impl Iterator<Item=&[Option<Tile>]> {
+    pub fn background_items_within(&self, bounds: Rect) -> impl Iterator<Item=&Tile> {
         self.background_items.slice_within(self.tile_width, self.tile_height, bounds)
     }
 
-    pub fn map_within(&self, bounds: Rect) -> impl Iterator<Item=&[Option<Tile>]> {
+    pub fn map_within(&self, bounds: Rect) -> impl Iterator<Item=&Tile> {
         self.map.slice_within(self.tile_width, self.tile_height, bounds)
     }
 }
