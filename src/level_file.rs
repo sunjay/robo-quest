@@ -35,26 +35,26 @@ impl From<io::Error> for ReadLevelError {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Level {
-    width: u32,
-    height: u32,
-    infinite: bool,
-    layers: Vec<Layer>,
-    orientation: Orientation,
+    pub width: u32,
+    pub height: u32,
+    pub infinite: bool,
+    pub layers: Vec<Layer>,
+    pub orientation: Orientation,
     #[serde(rename = "renderorder")]
-    render_order: RenderOrder,
+    pub render_order: RenderOrder,
     #[serde(rename = "tiledversion")]
-    tiled_version: String,
+    pub tiled_version: String,
     #[serde(rename = "tilewidth")]
-    tile_width: u32,
+    pub tile_width: u32,
     #[serde(rename = "tileheight")]
-    tile_height: u32,
+    pub tile_height: u32,
     #[serde(rename = "tilesets")]
-    tile_sets: Vec<TileSet>,
+    pub tile_sets: Vec<TileSet>,
     #[serde(rename = "type")]
-    type_: String,
-    version: u32,
+    pub type_: String,
+    pub version: u32,
     #[serde(rename = "nextobjectid")]
-    next_object_id: i32,
+    pub next_object_id: i32,
 }
 
 impl Level {
@@ -118,53 +118,53 @@ pub enum DrawOrder {
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Object {
-    width: f64,
-    height: f64,
-    x: f64,
-    y: f64,
-    rotation: f64,
-    id: usize,
-    name: String,
+    pub width: f64,
+    pub height: f64,
+    pub x: f64,
+    pub y: f64,
+    pub rotation: f64,
+    pub id: usize,
+    pub name: String,
     #[serde(rename = "type")]
-    type_: String,
+    pub type_: String,
     #[serde(default)]
     #[serde(skip_serializing_if = "is_false")]
-    point: bool,
-    visible: bool,
+    pub point: bool,
+    pub visible: bool,
 }
 
 fn is_false(x: &bool) -> bool { !x }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TileSet {
-    columns: u32,
+    pub columns: u32,
     #[serde(rename = "firstgid")]
-    first_gid: u32,
-    grid: Grid,
-    margin: i32,
-    name: String,
-    spacing: i32,
+    pub first_gid: u32,
+    pub grid: Grid,
+    pub margin: i32,
+    pub name: String,
+    pub spacing: i32,
     #[serde(rename = "tilecount")]
-    tile_count: u32,
+    pub tile_count: u32,
     #[serde(rename = "tilewidth")]
-    tile_width: u32,
+    pub tile_width: u32,
     #[serde(rename = "tileheight")]
-    tile_height: u32,
-    tiles: HashMap<String, Tile>,
+    pub tile_height: u32,
+    pub tiles: HashMap<String, Tile>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Grid {
-    width: u32,
-    height: u32,
-    orientation: Orientation,
+    pub width: u32,
+    pub height: u32,
+    pub orientation: Orientation,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Tile {
-    image: String,
+    pub image: String,
     #[serde(rename = "imagewidth")]
-    image_width: u32,
+    pub image_width: u32,
     #[serde(rename = "imageheight")]
-    image_height: u32,
+    pub image_height: u32,
 }
