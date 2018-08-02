@@ -47,8 +47,8 @@
                  "type":"level_start",
                  "visible":true,
                  "width":0,
-                 "x":292.333,
-                 "y":469
+                 "x":300,
+                 "y":460
                 }, 
                 {
                  "height":640,
@@ -65,7 +65,7 @@
          "offsety":1,
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
