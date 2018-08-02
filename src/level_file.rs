@@ -97,10 +97,6 @@ pub enum Layer {
         draw_order: DrawOrder,
         name: String,
         objects: Vec<Object>,
-        #[serde(rename = "offsetx")]
-        offset_x: f64,
-        #[serde(rename = "offsety")]
-        offset_y: f64,
         opacity: f64,
         #[serde(rename = "type")]
         type_: String,

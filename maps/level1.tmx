@@ -918,10 +918,10 @@
 238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,238,0,0,0,0,0,238,238,238,238,238,238,238,238,238,238,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="markers" locked="1" offsetx="-141.5" offsety="1">
-  <object id="1" name="level_start" type="level_start" x="300" y="460">
+ <objectgroup name="markers" visible="0" locked="1">
+  <object id="1" name="level_start" type="level_start" x="160" y="460">
    <point/>
   </object>
-  <object id="4" name="level_boundary" type="level_boundary" x="260" y="0" width="940" height="640"/>
+  <object id="4" name="level_boundary" type="level_boundary" x="120" y="0" width="940" height="640"/>
  </objectgroup>
 </map>

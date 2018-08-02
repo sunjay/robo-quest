@@ -47,7 +47,7 @@
                  "type":"level_start",
                  "visible":true,
                  "width":0,
-                 "x":300,
+                 "x":160,
                  "y":460
                 }, 
                 {
@@ -58,14 +58,12 @@
                  "type":"level_boundary",
                  "visible":true,
                  "width":940,
-                 "x":260,
+                 "x":120,
                  "y":0
                 }],
-         "offsetx":-141.5,
-         "offsety":1,
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
