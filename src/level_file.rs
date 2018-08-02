@@ -9,8 +9,11 @@ use std::{
     fs::File,
     path::Path,
     collections::HashMap,
+    fmt::Display,
+    str::FromStr,
 };
 
+use serde::de::{self, Deserialize, Deserializer};
 use serde_json;
 
 #[derive(Debug, Fail)]
@@ -81,7 +84,7 @@ pub enum RenderOrder {
 #[serde(untagged)]
 pub enum Layer {
     TileLayer {
-        data: Vec<i32>,
+        data: Vec<u32>,
         width: u32,
         height: u32,
         x: i32,
@@ -146,7 +149,20 @@ pub struct TileSet {
     pub tile_width: u32,
     #[serde(rename = "tileheight")]
     pub tile_height: u32,
-    pub tiles: HashMap<String, Tile>,
+    pub tiles: HashMap<TileId, Tile>,
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
+pub struct TileId(#[serde(deserialize_with = "from_str")] pub u32);
+
+// From: https://github.com/serde-rs/json/issues/317#issuecomment-300251188
+fn from_str<'de, T, D>(deserializer: D) -> Result<T, D::Error>
+    where T: FromStr,
+          T::Err: Display,
+          D: Deserializer<'de>
+{
+    let s = String::deserialize(deserializer)?;
+    T::from_str(&s).map_err(de::Error::custom)
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

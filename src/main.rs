@@ -22,6 +22,7 @@ mod renderer;
 mod resources;
 mod texture_manager;
 mod level_file;
+mod map;
 
 use std::{
     thread,
@@ -43,6 +44,7 @@ use components::{Position, Velocity, Sprite, KeyboardControlled, MovementAnimati
 use resources::{FramesElapsed, GameKeys};
 use texture_manager::TextureManager;
 use renderer::Renderer;
+use map::LevelMap;
 
 fn main() -> Result<(), String> {
     let mut renderer = Renderer::init(320, 240)?;
@@ -54,6 +56,8 @@ fn main() -> Result<(), String> {
 
     world.add_resource(FramesElapsed(1));
     world.add_resource(GameKeys::from(event_pump.keyboard_state()));
+    let level_map = LevelMap::load_file("maps/level1.json", &mut textures);
+    world.add_resource(level_map);
 
     let mut dispatcher = DispatcherBuilder::new()
         .with(systems::Keyboard, "Keyboard", &[])
