@@ -40,7 +40,15 @@ use specs::{
     World,
 };
 
-use components::{Position, BoundingBox, Velocity, Sprite, KeyboardControlled, MovementAnimation};
+use components::{
+    Position,
+    BoundingBox,
+    Velocity,
+    Sprite,
+    KeyboardControlled,
+    CameraFocus,
+    MovementAnimation
+};
 use resources::{FramesElapsed, GameKeys};
 use texture_manager::TextureManager;
 use renderer::Renderer;
@@ -58,7 +66,7 @@ fn main() -> Result<(), String> {
     world.add_resource(GameKeys::from(event_pump.keyboard_state()));
     //FIXME: Remove this unwrap() when we start using proper error types
     let level_map = LevelMap::load_file("maps/level1.json", &mut textures).unwrap();
-    world.add_resource(level_map);
+    world.add_resource(level_map.clone());
 
     let mut dispatcher = DispatcherBuilder::new()
         .with(systems::Keyboard, "Keyboard", &[])
@@ -67,11 +75,13 @@ fn main() -> Result<(), String> {
         .with(systems::Animator, "Animator", &["Physics"])
         .build();
     dispatcher.setup(&mut world.res);
+    // Renderer is not called in the dispatcher, so we need to separately set up the component
+    // storages for anything it uses.
+    Renderer::setup(&mut world.res);
 
     // Add the robot
+    let robot_center = level_map.level_start();
     let robot_texture = textures.create_png_texture("assets/robots.png")?;
-    let canvas_size = renderer.dimensions();
-    let robot_center = Point::new(canvas_size.0 as i32 / 2, canvas_size.1 as i32 / 2);
     let robot_animation = [
         // The position on the texture of the robot
         Rect::new(110, 115, 32, 30),
@@ -79,6 +89,7 @@ fn main() -> Result<(), String> {
     ];
     world.create_entity()
         .with(KeyboardControlled)
+        .with(CameraFocus)
         .with(Position(robot_center))
         .with(BoundingBox {width: 32, height: 30})
         .with(Velocity(Point::new(0, 0)))

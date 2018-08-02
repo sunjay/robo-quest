@@ -14,13 +14,16 @@ use specs::{
     Join,
     ReadStorage,
     World,
+    Resources,
+    SystemData,
 };
 
 use texture_manager::TextureManager;
-use components::{Position, Sprite};
+use components::{Position, Sprite, CameraFocus};
 
 #[derive(SystemData)]
-pub struct RenderData<'a> {
+struct RenderData<'a> {
+    camera_focuses: ReadStorage<'a, CameraFocus>,
     positions: ReadStorage<'a, Position>,
     sprites: ReadStorage<'a, Sprite>,
 }
@@ -33,6 +36,10 @@ pub struct Renderer {
 }
 
 impl Renderer {
+    pub fn setup(res: &mut Resources) {
+        RenderData::setup(res);
+    }
+
     pub fn init(width: u32, height: u32) -> Result<Self, String> {
         let sdl_context = sdl2::init()?;
         let video_subsystem = sdl_context.video()?;
@@ -90,13 +97,23 @@ impl Renderer {
     pub fn render(&mut self, world: &World, textures: &TextureManager) -> Result<(), String> {
         self.canvas.clear();
 
-        let RenderData {positions, sprites} = world.system_data();
+        let RenderData {positions, sprites, camera_focuses} = world.system_data();
+        let mut camera_focuses = (&positions, &camera_focuses).join();
+        let (Position(render_center), _) = camera_focuses.next().expect("Renderer was not told which entity to focus on");
+        assert!(camera_focuses.next().is_none(),
+            "Renderer was asked to focus on more than one thing");
+
+        // Put the camera focus position in the center of the screen
+        let screen_size = self.dimensions();
+        let render_center = render_center.offset(-(screen_size.0 as i32/2), -(screen_size.1 as i32/2));
+
         //FIXME: The ordering of rendering needs to be made explicit with layering or something
         for (Position(pos), sprite) in (&positions, &sprites).join() {
+            let pos = pos.offset(-render_center.x(), -render_center.y());
             let texture = textures.get(sprite.texture_id);
             let source_rect = sprite.region;
             let mut dest_rect = source_rect.clone();
-            dest_rect.center_on(*pos);
+            dest_rect.center_on(pos);
 
             self.canvas.copy_ex(
                 texture,

@@ -23,9 +23,18 @@ pub struct BoundingBox {
 #[storage(VecStorage)]
 pub struct Velocity(pub Point);
 
+/// The keyboard controlled player. Only one entity should hold this at a given time.
 #[derive(Debug, Default, Component)]
 #[storage(NullStorage)]
 pub struct KeyboardControlled;
+
+
+/// The entity with this component and a Position component will be centered in the camera
+/// when the scene is rendered.
+/// Only one entity should hold this at a given time.
+#[derive(Debug, Default, Component)]
+#[storage(NullStorage)]
+pub struct CameraFocus;
 
 /// Renders a sprite from a surface (spritesheet image).
 ///
