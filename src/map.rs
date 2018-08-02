@@ -26,6 +26,8 @@ impl TileGrid {
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Tile {
+    x: i32,
+    y: i32,
     texture: TextureId,
     image_width: u32,
     image_height: u32,
@@ -97,8 +99,12 @@ impl LevelMap {
                 Layer::TileLayer {name, data, width: layer_width, height: layer_height, ..} => {
                     let mut tile_rows = Vec::with_capacity(rows as usize);
 
+                    let mut row = -1;
+                    let mut col = 0;
                     for (i, &id) in data.into_iter().enumerate() {
                         if i as u32 % columns == 0 {
+                            row += 1;
+                            col = 0;
                             tile_rows.push(Vec::with_capacity(columns as usize));
                         }
                         let tile = lookup_tile(id).map(|tile| {
@@ -107,12 +113,15 @@ impl LevelMap {
                             //FIXME: Remove this unwrap() when we start using proper error types
                             let texture = texture_manager.create_png_texture(image_path).unwrap();
                             Tile {
+                                x: col * tile_width as i32,
+                                y: row * tile_height as i32,
                                 texture,
                                 image_width: tile.image_width,
                                 image_height: tile.image_height,
                             }
                         });
                         tile_rows.last_mut().unwrap().push(tile);
+                        col += 1;
                     }
 
                     assert_eq!(tile_rows.len(), rows as usize);
