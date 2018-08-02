@@ -3,9 +3,21 @@ use specs::{VecStorage, NullStorage, HashMapStorage};
 
 use texture_manager::TextureId;
 
+/// Represents the XY world coordinates of an entity.
+///
+/// This is distinct from the screen coordinates which are bounded by the size of the display.
 #[derive(Debug, Component)]
 #[storage(VecStorage)]
 pub struct Position(pub Point);
+
+/// Represents the bounding box centered around an entity's position. BoundingBox alone doesn't
+/// mean much without a Position also attached to the entity.
+#[derive(Debug, Component)]
+#[storage(VecStorage)]
+pub struct BoundingBox {
+    pub width: u32,
+    pub height: u32,
+}
 
 #[derive(Debug, Component)]
 #[storage(VecStorage)]

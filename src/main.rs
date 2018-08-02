@@ -40,7 +40,7 @@ use specs::{
     World,
 };
 
-use components::{Position, Velocity, Sprite, KeyboardControlled, MovementAnimation};
+use components::{Position, BoundingBox, Velocity, Sprite, KeyboardControlled, MovementAnimation};
 use resources::{FramesElapsed, GameKeys};
 use texture_manager::TextureManager;
 use renderer::Renderer;
@@ -56,12 +56,14 @@ fn main() -> Result<(), String> {
 
     world.add_resource(FramesElapsed(1));
     world.add_resource(GameKeys::from(event_pump.keyboard_state()));
-    let level_map = LevelMap::load_file("maps/level1.json", &mut textures);
+    //FIXME: Remove this unwrap() when we start using proper error types
+    let level_map = LevelMap::load_file("maps/level1.json", &mut textures).unwrap();
     world.add_resource(level_map);
 
     let mut dispatcher = DispatcherBuilder::new()
         .with(systems::Keyboard, "Keyboard", &[])
         .with(systems::Physics, "Physics", &["Keyboard"])
+        .with(systems::BoundaryEnforcer, "BoundaryEnforcer", &["Physics"])
         .with(systems::Animator, "Animator", &["Keyboard"])
         .build();
     dispatcher.setup(&mut world.res);
@@ -78,6 +80,7 @@ fn main() -> Result<(), String> {
     world.create_entity()
         .with(KeyboardControlled)
         .with(Position(robot_center))
+        .with(BoundingBox {width: 32, height: 30})
         .with(Velocity(Point::new(0, 0)))
         .with(Sprite {
             texture_id: robot_texture,
