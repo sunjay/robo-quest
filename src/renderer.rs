@@ -7,6 +7,7 @@ use sdl2::{
     EventPump,
     image::{Sdl2ImageContext, INIT_PNG},
     pixels::Color,
+    rect::{Point, Rect},
     render::{TextureCreator, Canvas},
     video::{Window, WindowContext},
 };
@@ -16,13 +17,16 @@ use specs::{
     World,
     Resources,
     SystemData,
+    ReadExpect,
 };
 
 use texture_manager::TextureManager;
 use components::{Position, Sprite, CameraFocus};
+use map::{LevelMap, Tile};
 
 #[derive(SystemData)]
 struct RenderData<'a> {
+    map: ReadExpect<'a, LevelMap>,
     camera_focuses: ReadStorage<'a, CameraFocus>,
     positions: ReadStorage<'a, Position>,
     sprites: ReadStorage<'a, Sprite>,
@@ -97,19 +101,29 @@ impl Renderer {
     pub fn render(&mut self, world: &World, textures: &TextureManager) -> Result<(), String> {
         self.canvas.clear();
 
-        let RenderData {positions, sprites, camera_focuses} = world.system_data();
+        let RenderData {map, positions, sprites, camera_focuses} = world.system_data();
         let mut camera_focuses = (&positions, &camera_focuses).join();
-        let (Position(render_center), _) = camera_focuses.next().expect("Renderer was not told which entity to focus on");
+        let (&Position(camera_focus), _) = camera_focuses.next().expect("Renderer was not told which entity to focus on");
         assert!(camera_focuses.next().is_none(),
             "Renderer was asked to focus on more than one thing");
 
         // Put the camera focus position in the center of the screen
-        let screen_size = self.dimensions();
-        let render_center = render_center.offset(-(screen_size.0 as i32/2), -(screen_size.1 as i32/2));
+        let (screen_width, screen_height) = self.dimensions();
+        let screen = Rect::from_center(camera_focus, screen_width, screen_height);
 
-        //FIXME: The ordering of rendering needs to be made explicit with layering or something
-        for (Position(pos), sprite) in (&positions, &sprites).join() {
-            let pos = pos.offset(-render_center.x(), -render_center.y());
+        // The position on the map of the screen's top left corner
+        // Adding this point to the position of the camera_focus would make it render in the center
+        // of the screen
+        let render_center = camera_focus.offset(
+            -(screen_width as i32 / 2),
+            -(screen_height as i32 / 2),
+        );
+
+        self.render_tiles(map.background_within(screen), render_center, textures)?;
+        self.render_tiles(map.background_items_within(screen), render_center, textures)?;
+
+        for (&Position(pos), ref sprite) in (&positions, &sprites).join() {
+            let pos = pos - render_center;
             let texture = textures.get(sprite.texture_id);
             let source_rect = sprite.region;
             let mut dest_rect = source_rect.clone();
@@ -126,7 +140,34 @@ impl Renderer {
             )?;
         }
 
+        self.render_tiles(map.map_within(screen), render_center, textures)?;
+
         self.canvas.present();
+
+        Ok(())
+    }
+
+    fn render_tiles<'a, I: Iterator<Item=&'a Tile>>(&mut self, tiles: I, render_center: Point, textures: &TextureManager) -> Result<(), String> {
+        for &Tile {x, y, texture_id, image_width, image_height} in tiles {
+            let texture = textures.get(texture_id);
+            let source_rect = Rect::new(0, 0, image_width, image_height);
+            let dest_rect = Rect::new(
+                x - render_center.x(),
+                y - render_center.y(),
+                image_width,
+                image_height,
+            );
+
+            self.canvas.copy_ex(
+                texture,
+                Some(source_rect),
+                Some(dest_rect),
+                0.0,
+                None,
+                false,
+                false
+            )?;
+        }
 
         Ok(())
     }

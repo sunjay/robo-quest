@@ -41,13 +41,13 @@ impl TileGrid {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+#[derive(Debug, Clone, PartialEq, Eq)]
 pub struct Tile {
-    x: i32,
-    y: i32,
-    texture: TextureId,
-    image_width: u32,
-    image_height: u32,
+    pub x: i32,
+    pub y: i32,
+    pub texture_id: TextureId,
+    pub image_width: u32,
+    pub image_height: u32,
 }
 
 /// Resource that represents a map of tiles for an entire level of the game.
@@ -128,11 +128,11 @@ impl LevelMap {
                             //FIXME: Remove this unwrap() when we start using proper error types
                             let image_path = resolve_dir.join(&tile.image).canonicalize().unwrap();
                             //FIXME: Remove this unwrap() when we start using proper error types
-                            let texture = texture_manager.create_png_texture(image_path).unwrap();
+                            let texture_id = texture_manager.create_png_texture(image_path).unwrap();
                             Tile {
                                 x: col * tile_width as i32,
                                 y: row * tile_height as i32,
-                                texture,
+                                texture_id,
                                 image_width: tile.image_width,
                                 image_height: tile.image_height,
                             }
