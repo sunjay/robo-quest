@@ -64,7 +64,7 @@ fn main() -> Result<(), String> {
         .with(systems::Keyboard, "Keyboard", &[])
         .with(systems::Physics, "Physics", &["Keyboard"])
         .with(systems::BoundaryEnforcer, "BoundaryEnforcer", &["Physics"])
-        .with(systems::Animator, "Animator", &["Keyboard"])
+        .with(systems::Animator, "Animator", &["Physics"])
         .build();
     dispatcher.setup(&mut world.res);
 
