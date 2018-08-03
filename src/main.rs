@@ -15,6 +15,7 @@ extern crate serde_json;
 extern crate sdl2;
 extern crate specs;
 extern crate shred;
+extern crate cgmath;
 
 mod systems;
 mod components;
@@ -23,6 +24,9 @@ mod resources;
 mod texture_manager;
 mod level_file;
 mod map;
+
+use cgmath::Vector2;
+type Vec2D = Vector2<f64>;
 
 use std::{
     thread,
@@ -44,15 +48,18 @@ use components::{
     Position,
     BoundingBox,
     Velocity,
+    AppliedForce,
+    TerminalVelocity,
+    Mass,
     Sprite,
     KeyboardControlled,
     CameraFocus,
-    MovementAnimation
+    MovementAnimation,
 };
 use resources::{FramesElapsed, GameKeys};
 use texture_manager::TextureManager;
 use renderer::Renderer;
-use map::LevelMap;
+use map::{LevelMap, Tile};
 
 fn main() -> Result<(), String> {
     let mut renderer = Renderer::init(320, 240)?;
@@ -71,8 +78,8 @@ fn main() -> Result<(), String> {
     let mut dispatcher = DispatcherBuilder::new()
         .with(systems::Keyboard, "Keyboard", &[])
         .with(systems::Physics, "Physics", &["Keyboard"])
-        .with(systems::BoundaryEnforcer, "BoundaryEnforcer", &["Physics"])
-        .with(systems::Animator, "Animator", &["Physics"])
+        .with(systems::PositionUpdater, "PositionUpdater", &["Physics"])
+        .with(systems::Animator, "Animator", &["PositionUpdater"])
         .build();
     dispatcher.setup(&mut world.res);
     // Renderer is not called in the dispatcher, so we need to separately set up the component
@@ -91,8 +98,11 @@ fn main() -> Result<(), String> {
         .with(KeyboardControlled)
         .with(CameraFocus)
         .with(Position(robot_center))
+        .with(Mass(1000.0))
         .with(BoundingBox {width: 32, height: 30})
-        .with(Velocity(Point::new(0, 0)))
+        .with(Velocity(Vec2D {x: 0.0, y: 0.0}))
+        .with(AppliedForce(Vec2D {x: 0.0, y: 0.0}))
+        .with(TerminalVelocity {x: 10.0, y: 7.0})
         .with(Sprite {
             texture_id: robot_texture,
             region: robot_animation[0],
@@ -104,6 +114,13 @@ fn main() -> Result<(), String> {
             frame_counter: 0,
         })
         .build();
+
+    for &Tile {x, y, image_width, image_height, ..} in level_map.iter_map_tiles() {
+        world.create_entity()
+            .with(Position(Point::new(x, y)))
+            .with(BoundingBox { width: image_width, height: image_height })
+            .build();
+    }
 
     let mut timer = renderer.timer()?;
 

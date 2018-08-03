@@ -37,7 +37,11 @@ impl TileGrid {
         let end_col = clamp_col((x + width) / tile_width);
         let end_row = clamp_row((y + height) / tile_height);
 
-        self.0[start_row..=end_row].iter().flat_map(move |col| col[start_col..=end_col].iter().filter_map(|x| x.as_ref()))
+        self.0[start_row..=end_row].iter().flat_map(move |row| row[start_col..=end_col].iter().filter_map(|x| x.as_ref()))
+    }
+
+    pub fn iter_tiles(&self) -> impl Iterator<Item=&Tile> {
+        self.0.iter().flat_map(|row| row.iter().filter_map(|x| x.as_ref()))
     }
 }
 
@@ -229,5 +233,9 @@ impl LevelMap {
 
     pub fn map_within(&self, bounds: Rect) -> impl Iterator<Item=&Tile> {
         self.map.slice_within(self.tile_width, self.tile_height, bounds)
+    }
+
+    pub fn iter_map_tiles(&self) -> impl Iterator<Item=&Tile> {
+        self.map.iter_tiles()
     }
 }

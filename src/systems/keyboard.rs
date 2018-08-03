@@ -1,13 +1,13 @@
-use sdl2::rect::Point;
 use specs::{System, Join, ReadExpect, ReadStorage, WriteStorage};
 
-use components::{Velocity, KeyboardControlled};
+use components::{Mass, AppliedForce, KeyboardControlled};
 use resources::GameKeys;
 
 #[derive(SystemData)]
 pub struct KeyboardData<'a> {
     keys: ReadExpect<'a, GameKeys>,
-    velocities: WriteStorage<'a, Velocity>,
+    masses: ReadStorage<'a, Mass>,
+    applied_forces: WriteStorage<'a, AppliedForce>,
     keyboard_controlled: ReadStorage<'a, KeyboardControlled>,
 }
 
@@ -16,18 +16,17 @@ pub struct Keyboard;
 impl<'a> System<'a> for Keyboard {
     type SystemData = KeyboardData<'a>;
 
-    fn run(&mut self, KeyboardData {keys, mut velocities, keyboard_controlled}: Self::SystemData) {
-        for (Velocity(ref mut vel), _) in (&mut velocities, &keyboard_controlled).join() {
-            let y = vel.y();
+    fn run(&mut self, KeyboardData {keys, masses, mut applied_forces, keyboard_controlled}: Self::SystemData) {
+        for (&Mass(mass), AppliedForce(ref mut force), _) in (&masses, &mut applied_forces, &keyboard_controlled).join() {
             // Assuming that only a single arrow key can be held down at a time.
             if keys.right_arrow {
-                *vel = Point::new(3, y);
+                force.x = mass * 1.5; // kg * pixels / frame^2
             }
             else if keys.left_arrow {
-                *vel = Point::new(-3, y);
+                force.x = mass * -1.5; // kg * pixels / frame^2
             }
             else {
-                *vel = Point::new(0, y);
+                force.x = mass * 0.0; // kg * pixels / frame^2
             }
         }
     }
