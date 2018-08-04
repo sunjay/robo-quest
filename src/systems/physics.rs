@@ -44,14 +44,14 @@ impl<'a> System<'a> for Physics {
             let gravity = Vec2D {x: 0.0, y: Self::GRAVITY_ACCEL * mass};
 
             let mut collision_force = Vec2D {x: 0.0, y: 0.0};
-            // 1px height box underneath the entity
-            let mut bottom_bumper = Rect::new(
-                0,
-                0,
-                width,
-                2,
-            );
+
+            let mut bottom_bumper = Rect::new(0, 0, width - 2, 2);
             bottom_bumper.center_on(pos.offset(0, height as i32 / 2));
+            let mut left_bumper = Rect::new(0, 0, 2, height - 2);
+            left_bumper.center_on(pos.offset(-(width as i32 / 2), 0));
+            let mut right_bumper = Rect::new(0, 0, 2, height - 2);
+            right_bumper.center_on(pos.offset(width as i32 / 2, 0));
+
             for (other, &Position(other_pos), &BoundingBox {width, height}) in (&*entities, &positions, &bounding_boxes).join() {
                 if entity == other {
                     continue;
@@ -68,6 +68,26 @@ impl<'a> System<'a> for Physics {
                     // Apply friction if moving
                     if vel.x.abs() > 0.0 {
                         collision_force.x = -100.00 * vel.x.signum();
+                    }
+                }
+
+                if left_bumper.has_intersection(other_rect) {
+                    // Stop moving once we hit a wall
+                    if applied.x < 0.0 {
+                        collision_force.x = -applied.x;
+                    }
+                    if vel.x < 0.0 {
+                        vel.x = 0.0;
+                    }
+                }
+
+                if right_bumper.has_intersection(other_rect) {
+                    // Stop moving once we hit a wall
+                    if applied.x > 0.0 {
+                        collision_force.x = -applied.x;
+                    }
+                    if vel.x > 0.0 {
+                        vel.x = 0.0;
                     }
                 }
             }
