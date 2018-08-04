@@ -20,11 +20,11 @@ impl<'a> System<'a> for Animator {
         let FramesElapsed(frames_elapsed) = *frames;
 
         for (&Velocity(vel), sprite, animation) in (&velocities, &mut sprites, &mut animations).join() {
-            if vel.x.floor() > 0.0 {
+            if vel.x.round() > 0.0 {
                 // The assumption is that the sprite begins facing right
                 sprite.flip_horizontal = false;
             }
-            else if vel.x.floor() < 0.0 {
+            else if vel.x.round() < 0.0 {
                 sprite.flip_horizontal = true;
             }
             else { // No horizontal movement
