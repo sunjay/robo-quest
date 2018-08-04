@@ -17,9 +17,11 @@ pub struct PhysicsData<'a> {
     velocities: WriteStorage<'a, Velocity>,
 }
 
-const GRAVITY_ACCEL: f64 = 0.0981; // pixels / frame^2
-
 pub struct Physics;
+
+impl Physics {
+    pub const GRAVITY_ACCEL: f64 = 0.0981; // pixels / frame^2
+}
 
 impl<'a> System<'a> for Physics {
     type SystemData = PhysicsData<'a>;
@@ -39,7 +41,7 @@ impl<'a> System<'a> for Physics {
         let frames_elapsed = frames_elapsed as f64;
 
         for (entity, Position(pos), &BoundingBox {width, height}, &Mass(mass), AppliedForce(applied), Velocity(vel)) in (&*entities, &positions, &bounding_boxes, &masses, &applied_forces, &mut velocities).join() {
-            let gravity = Vec2D {x: 0.0, y: GRAVITY_ACCEL * mass};
+            let gravity = Vec2D {x: 0.0, y: Self::GRAVITY_ACCEL * mass};
 
             let mut collision_force = Vec2D {x: 0.0, y: 0.0};
             // 1px height box underneath the entity
