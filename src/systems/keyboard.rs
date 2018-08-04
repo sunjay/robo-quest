@@ -20,10 +20,10 @@ impl<'a> System<'a> for Keyboard {
         for (&Mass(mass), AppliedForce(ref mut force), _) in (&masses, &mut applied_forces, &keyboard_controlled).join() {
             // Assuming that only a single arrow key can be held down at a time.
             if keys.right_arrow {
-                force.x = mass * 1.5; // kg * pixels / frame^2
+                force.x = mass * 1.0; // kg * pixels / frame^2
             }
             else if keys.left_arrow {
-                force.x = mass * -1.5; // kg * pixels / frame^2
+                force.x = mass * -1.0; // kg * pixels / frame^2
             }
             else {
                 force.x = mass * 0.0; // kg * pixels / frame^2
