@@ -4,7 +4,7 @@ use specs::{VecStorage, NullStorage, HashMapStorage};
 use texture_manager::TextureId;
 use ::{Vec2D};
 
-/// Represents the XY world coordinates of an entity.
+/// Represents the XY world coordinates of the center of an entity.
 ///
 /// This is distinct from the screen coordinates which are bounded by the size of the display.
 #[derive(Debug, Component)]

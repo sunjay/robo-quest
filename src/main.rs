@@ -117,7 +117,7 @@ fn main() -> Result<(), String> {
 
     for &Tile {x, y, image_width, image_height, ..} in level_map.iter_map_tiles() {
         world.create_entity()
-            .with(Position(Point::new(x, y)))
+            .with(Position(Point::new(x + image_width as i32 / 2, y + image_height as i32 / 2)))
             .with(BoundingBox { width: image_width, height: image_height })
             .build();
     }
