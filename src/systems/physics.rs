@@ -63,6 +63,10 @@ impl<'a> System<'a> for Physics {
                     if vel.y > 0.0 {
                         vel.y = 0.0;
                     }
+                    // Apply friction if moving
+                    if vel.x.abs() > 0.0 {
+                        collision_force.x = -100.00 * vel.x.signum();
+                    }
                 }
             }
 

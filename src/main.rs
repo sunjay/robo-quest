@@ -102,7 +102,7 @@ fn main() -> Result<(), String> {
         .with(BoundingBox {width: 32, height: 30})
         .with(Velocity(Vec2D {x: 0.0, y: 0.0}))
         .with(AppliedForce(Vec2D {x: 0.0, y: 0.0}))
-        .with(TerminalVelocity {x: 10.0, y: 7.0})
+        .with(TerminalVelocity {x: 5.0, y: 7.0})
         .with(Sprite {
             texture_id: robot_texture,
             region: robot_animation[0],
