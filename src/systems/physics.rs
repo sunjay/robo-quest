@@ -45,12 +45,9 @@ impl<'a> System<'a> for Physics {
 
             let mut collision_force = Vec2D {x: 0.0, y: 0.0};
 
-            let mut bottom_bumper = Rect::new(0, 0, width - 2, 2);
-            bottom_bumper.center_on(pos.offset(0, height as i32 / 2));
-            let mut left_bumper = Rect::new(0, 0, 2, height - 2);
-            left_bumper.center_on(pos.offset(-(width as i32 / 2), 0));
-            let mut right_bumper = Rect::new(0, 0, 2, height - 2);
-            right_bumper.center_on(pos.offset(width as i32 / 2, 0));
+            let bottom_bumper = Rect::from_center(pos.offset(0, height as i32 / 2), width - 2, 2);
+            let left_bumper = Rect::from_center(pos.offset(-(width as i32 / 2), 0), 2, height - 2);
+            let right_bumper = Rect::from_center(pos.offset(width as i32 / 2, 0), 2, height - 2);
 
             for (other, &Position(other_pos), &BoundingBox {width, height}) in (&*entities, &positions, &bounding_boxes).join() {
                 if entity == other {
