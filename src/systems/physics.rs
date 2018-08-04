@@ -1,3 +1,4 @@
+use sdl2::rect::Rect;
 use specs::{System, Join, ReadExpect, ReadStorage, WriteStorage, Entities};
 
 use components::{Velocity, Position, Mass, BoundingBox, AppliedForce, TerminalVelocity};
@@ -37,10 +38,35 @@ impl<'a> System<'a> for Physics {
         let FramesElapsed(frames_elapsed) = *frames;
         let frames_elapsed = frames_elapsed as f64;
 
-        for (entity, Position(pos), BoundingBox {width, height}, &Mass(mass), AppliedForce(applied), Velocity(vel)) in (&*entities, &positions, &bounding_boxes, &masses, &applied_forces, &mut velocities).join() {
+        for (entity, Position(pos), &BoundingBox {width, height}, &Mass(mass), AppliedForce(applied), Velocity(vel)) in (&*entities, &positions, &bounding_boxes, &masses, &applied_forces, &mut velocities).join() {
             let gravity = Vec2D {x: 0.0, y: GRAVITY_ACCEL * mass};
-            let net_force = gravity + applied;
 
+            let mut collision_force = Vec2D {x: 0.0, y: 0.0};
+            // 1px height box underneath the entity
+            let mut bottom_bumper = Rect::new(
+                0,
+                0,
+                width,
+                2,
+            );
+            bottom_bumper.center_on(pos.offset(0, height as i32 / 2));
+            for (other, &Position(other_pos), &BoundingBox {width, height}) in (&*entities, &positions, &bounding_boxes).join() {
+                if entity == other {
+                    continue;
+                }
+                let mut other_rect = Rect::new(0, 0, width, height);
+                other_rect.center_on(other_pos);
+                if bottom_bumper.has_intersection(other_rect) {
+                    collision_force.y = -gravity.y;
+
+                    // Stop moving down once we have reached the ground
+                    if vel.y > 0.0 {
+                        vel.y = 0.0;
+                    }
+                }
+            }
+
+            let net_force = gravity + applied + collision_force;
             let acceleration = net_force / mass;
             // vf = vi + a*t
             *vel += acceleration * frames_elapsed;
