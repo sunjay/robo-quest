@@ -12,7 +12,7 @@ use nphysics2d::{
 };
 use ncollide2d::shape::{Cuboid, ShapeHandle};
 
-use components::{Position, Velocity, BoundingBox, Density, AppliedForce};
+use components::{Position, Velocity, BoundingBox, Density, AppliedAcceleration};
 use resources::FramesElapsed;
 use math::{Vec2D, ToVec2D, ToPoint};
 
@@ -35,7 +35,7 @@ pub struct PhysicsData<'a> {
     frames: ReadExpect<'a, FramesElapsed>,
     densities: ReadStorage<'a, Density>,
     bounding_boxes: ReadStorage<'a, BoundingBox>,
-    applied_forces: ReadStorage<'a, AppliedForce>,
+    applied_accel: ReadStorage<'a, AppliedAcceleration>,
     positions: WriteStorage<'a, Position>,
     velocities: WriteStorage<'a, Velocity>,
 }
@@ -116,7 +116,7 @@ impl<'a> System<'a> for Physics {
             frames,
             densities,
             bounding_boxes,
-            applied_forces,
+            applied_accel,
             mut positions,
             mut velocities,
         } = data;
@@ -138,7 +138,7 @@ impl<'a> System<'a> for Physics {
                         Rect::from_center(pos, width, height),
                         density,
                         //TODO: Friction(f64) should be an optional Component which defaults to 0.0 if not present
-                        0.5,
+                        0.0,
                     );
 
                     let vel = velocities.get(entity);
@@ -156,18 +156,18 @@ impl<'a> System<'a> for Physics {
             }
         }
 
-        // Apply forces to every rigid body (if any forces have been applied)
-        let body_forces = self.bodies.iter()
-            .filter_map(|(&entity, body)| match (body, applied_forces.get(entity)) {
-                (&Body::RigidBody {body_handle, ..}, Some(&AppliedForce(force))) => {
-                    Some((body_handle, force))
+        // Apply accelerations to every rigid body (if any accelerations have been applied)
+        let body_accel = self.bodies.iter()
+            .filter_map(|(&entity, body)| match (body, applied_accel.get(entity)) {
+                (&Body::RigidBody {body_handle, ..}, Some(&AppliedAcceleration(accel))) => {
+                    Some((body_handle, accel))
                 },
                 _ => None,
             });
 
         let mut force_handles = Vec::new();
-        for (body_handle, force) in body_forces {
-            let mut generator = ConstantAcceleration::new(force, 0.0);
+        for (body_handle, accel) in body_accel {
+            let mut generator = ConstantAcceleration::new(accel, 0.0);
             generator.add_body_part(body_handle);
             let force_handle = self.world.add_force_generator(generator);
             force_handles.push(force_handle);

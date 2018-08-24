@@ -48,7 +48,7 @@ use components::{
     Position,
     BoundingBox,
     Velocity,
-    AppliedForce,
+    AppliedAcceleration,
     Density,
     Sprite,
     KeyboardControlled,
@@ -102,7 +102,7 @@ fn main() -> Result<(), String> {
         .with(Density(1000.0))
         .with(BoundingBox {width: 32, height: 30})
         .with(Velocity(Vec2D::zeros()))
-        .with(AppliedForce(Vec2D::zeros()))
+        .with(AppliedAcceleration(Vec2D::zeros()))
         .with(Sprite {
             texture_id: robot_texture,
             region: robot_animation[0],

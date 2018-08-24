@@ -43,14 +43,14 @@ pub struct Density(pub f64);
 #[storage(VecStorage)]
 pub struct Velocity(pub Vec2D);
 
-/// Apply a force to a given entity. This is combined in the physics engine with other forces such
-/// as gravity to create the net force acting on an object.
+/// Apply an acceleration to a given entity. This is combined in the physics engine with other
+/// forces such as gravity to create the net force acting on an object.
 ///
 /// Keep in mind that the coordinate system has +x to the right and +y downwards.
-/// Unit: kg * pixels / frame^2
+/// Unit: pixels / frame^2
 #[derive(Debug, Component)]
 #[storage(VecStorage)]
-pub struct AppliedForce(pub Vec2D);
+pub struct AppliedAcceleration(pub Vec2D);
 
 /// The keyboard controlled player. Only one entity should hold this at a given time.
 #[derive(Debug, Default, Component)]
