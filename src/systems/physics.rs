@@ -4,11 +4,10 @@ use sdl2::rect::Rect;
 use specs::{Entity, System, Join, ReadExpect, ReadStorage, WriteStorage, Entities};
 use nalgebra::{self as na, Isometry2};
 use nphysics2d::{
-    solver::{SignoriniCoulombPyramidModel, IntegrationParameters},
-    object::{BodyHandle, ColliderHandle, Material, BodySet},
-    force_generator::ForceGenerator,
+    solver::SignoriniCoulombPyramidModel,
+    object::{BodyHandle, ColliderHandle, Material},
+    force_generator::ConstantAcceleration,
     volumetric::Volumetric,
-    math::Force,
     world::World,
 };
 use ncollide2d::shape::{Cuboid, ShapeHandle};
@@ -18,29 +17,6 @@ use resources::FramesElapsed;
 use math::{Vec2D, ToVec2D, ToPoint};
 
 const COLLIDER_MARGIN: f64 = 0.01;
-
-struct ApplyForces {
-    body_forces: Vec<(BodyHandle, Vec2D)>,
-}
-
-impl ForceGenerator<f64> for ApplyForces {
-    fn apply(&mut self, _: &IntegrationParameters<f64>, bodies: &mut BodySet<f64>) -> bool {
-        for &(body_handle, force) in self.body_forces.iter() {
-            if !bodies.contains(body_handle) {
-                // This means that a entity was removed by its AppliedForce component still hung
-                // around somehow.
-                unreachable!("Body was removed from the world before a force could be applied");
-            }
-
-            let mut physics_body = bodies.body_part_mut(body_handle);
-            physics_body.apply_force(&Force::linear(force));
-        }
-
-        // If false, the physics world will remove this force generator after this call.
-        // We don't want this in case world.step() is called more than once.
-        true
-    }
-}
 
 #[derive(Debug)]
 enum Body {
@@ -187,16 +163,23 @@ impl<'a> System<'a> for Physics {
                     Some((body_handle, force))
                 },
                 _ => None,
-            })
-            .collect();
-        let force_generator = ApplyForces {body_forces};
-        let force_handle = self.world.add_force_generator(force_generator);
+            });
+
+        let mut force_handles = Vec::new();
+        for (body_handle, force) in body_forces {
+            let mut generator = ConstantAcceleration::new(force, 0.0);
+            generator.add_body_part(body_handle);
+            let force_handle = self.world.add_force_generator(generator);
+            force_handles.push(force_handle);
+        }
 
         for _ in 0..frames_elapsed {
             self.world.step();
         }
 
-        self.world.remove_force_generator(force_handle);
+        for force_handle in force_handles {
+            self.world.remove_force_generator(force_handle);
+        }
 
         // Update every tracked entity with the latest values from the physics engine
         // We don't need to update static colliders because they do not move
