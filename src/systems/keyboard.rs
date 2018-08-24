@@ -1,6 +1,6 @@
 use specs::{System, Join, ReadExpect, ReadStorage, WriteStorage};
 
-use components::{Mass, AppliedForce, KeyboardControlled};
+use components::{Density, AppliedForce, KeyboardControlled};
 use resources::GameKeys;
 
 use super::physics::Physics;
@@ -8,7 +8,7 @@ use super::physics::Physics;
 #[derive(SystemData)]
 pub struct KeyboardData<'a> {
     keys: ReadExpect<'a, GameKeys>,
-    masses: ReadStorage<'a, Mass>,
+    densities: ReadStorage<'a, Density>,
     applied_forces: WriteStorage<'a, AppliedForce>,
     keyboard_controlled: ReadStorage<'a, KeyboardControlled>,
 }
@@ -18,8 +18,9 @@ pub struct Keyboard;
 impl<'a> System<'a> for Keyboard {
     type SystemData = KeyboardData<'a>;
 
-    fn run(&mut self, KeyboardData {keys, masses, mut applied_forces, keyboard_controlled}: Self::SystemData) {
-        for (&Mass(mass), AppliedForce(ref mut force), _) in (&masses, &mut applied_forces, &keyboard_controlled).join() {
+    fn run(&mut self, KeyboardData {keys, densities, mut applied_forces, keyboard_controlled}: Self::SystemData) {
+        //FIXME: This needs to be redone now that we track density instead of mass
+        for (&Density(mass), AppliedForce(ref mut force), _) in (&densities, &mut applied_forces, &keyboard_controlled).join() {
             // Assuming that only a single arrow key can be held down at a time.
             if keys.right_arrow {
                 force.x = mass * 1.0; // kg * pixels / frame^2

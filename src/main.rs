@@ -15,8 +15,11 @@ extern crate serde_json;
 extern crate sdl2;
 extern crate specs;
 extern crate shred;
-extern crate cgmath;
+extern crate nalgebra;
+extern crate ncollide2d;
+extern crate nphysics2d;
 
+mod math;
 mod systems;
 mod components;
 mod renderer;
@@ -24,9 +27,6 @@ mod resources;
 mod texture_manager;
 mod level_file;
 mod map;
-
-use cgmath::Vector2;
-type Vec2D = Vector2<f64>;
 
 use std::{
     thread,
@@ -49,8 +49,7 @@ use components::{
     BoundingBox,
     Velocity,
     AppliedForce,
-    TerminalVelocity,
-    Mass,
+    Density,
     Sprite,
     KeyboardControlled,
     CameraFocus,
@@ -60,8 +59,11 @@ use resources::{FramesElapsed, GameKeys};
 use texture_manager::TextureManager;
 use renderer::Renderer;
 use map::{LevelMap, Tile};
+use math::Vec2D;
 
 fn main() -> Result<(), String> {
+    let fps = 60.0;
+
     let mut renderer = Renderer::init(320, 240)?;
     let texture_creator = renderer.texture_creator();
     let mut textures = TextureManager::new(&texture_creator);
@@ -77,9 +79,8 @@ fn main() -> Result<(), String> {
 
     let mut dispatcher = DispatcherBuilder::new()
         .with(systems::Keyboard, "Keyboard", &[])
-        .with(systems::Physics, "Physics", &["Keyboard"])
-        .with(systems::PositionUpdater, "PositionUpdater", &["Physics"])
-        .with(systems::Animator, "Animator", &["PositionUpdater"])
+        .with(systems::Physics::new(fps), "Physics", &["Keyboard"])
+        .with(systems::Animator, "Animator", &["Physics"])
         .build();
     dispatcher.setup(&mut world.res);
     // Renderer is not called in the dispatcher, so we need to separately set up the component
@@ -98,11 +99,10 @@ fn main() -> Result<(), String> {
         .with(KeyboardControlled)
         .with(CameraFocus)
         .with(Position(robot_center))
-        .with(Mass(1000.0))
+        .with(Density(1000.0))
         .with(BoundingBox {width: 32, height: 30})
-        .with(Velocity(Vec2D {x: 0.0, y: 0.0}))
-        .with(AppliedForce(Vec2D {x: 0.0, y: 0.0}))
-        .with(TerminalVelocity {x: 5.0, y: 7.0})
+        .with(Velocity(Vec2D::zeros()))
+        .with(AppliedForce(Vec2D::zeros()))
         .with(Sprite {
             texture_id: robot_texture,
             region: robot_animation[0],
@@ -124,8 +124,6 @@ fn main() -> Result<(), String> {
 
     let mut timer = renderer.timer()?;
 
-    let fps = 60;
-
     // Frames elapsed since the last render
     let mut last_frames_elapsed = 0;
     let mut running = true;
@@ -141,7 +139,7 @@ fn main() -> Result<(), String> {
             }
         }
 
-        let frames_elapsed = (ticks as f64 / 1000.0 * fps as f64) as usize;
+        let frames_elapsed = (ticks as f64 / 1000.0 * fps) as usize;
         let frames_elapsed_delta = frames_elapsed - last_frames_elapsed;
 
         // At least one frame must have passed for us to do anything
@@ -155,7 +153,7 @@ fn main() -> Result<(), String> {
             last_frames_elapsed = frames_elapsed;
         }
         else {
-            let ms_per_frame = (1000.0 / fps as f64) as u64;
+            let ms_per_frame = (1000.0 / fps) as u64;
             let ms_elapsed = (timer.ticks() - ticks) as u64;
             thread::sleep(Duration::from_millis(ms_per_frame - ms_elapsed));
         }
