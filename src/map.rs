@@ -216,16 +216,6 @@ impl LevelMap {
         })
     }
 
-    /// The width of each tile in pixels
-    pub fn tile_width(&self) -> usize {
-        self.tile_width
-    }
-
-    /// The height of each tile in pixels
-    pub fn tile_height(&self) -> usize {
-        self.tile_height
-    }
-
     pub fn level_start(&self) -> Point {
         self.level_start
     }
