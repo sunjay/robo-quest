@@ -4,9 +4,10 @@ use std::{
 };
 
 use sdl2::rect::{Point, Rect};
+use nalgebra::Point2;
 
 use texture_manager::{TextureManager, TextureId};
-use level_file::{ReadLevelError, Level, Layer, TileId, Object};
+use level_file::{ReadLevelError, Level, Layer, TileId, Object, Coordinate};
 
 /// A grid of tiles. Must have at least one row and one column.
 #[derive(Debug, Clone)]
@@ -39,10 +40,6 @@ impl TileGrid {
 
         self.0[start_row..=end_row].iter().flat_map(move |row| row[start_col..=end_col].iter().filter_map(|x| x.as_ref()))
     }
-
-    pub fn iter_tiles(&self) -> impl Iterator<Item=&Tile> {
-        self.0.iter().flat_map(|row| row.iter().filter_map(|x| x.as_ref()))
-    }
 }
 
 #[derive(Debug, Clone, PartialEq, Eq)]
@@ -62,6 +59,7 @@ pub struct Tile {
 pub struct LevelMap {
     level_start: Point,
     level_boundary: Rect,
+    static_boundaries: Vec<Vec<Point2<f64>>>,
     rows: usize,
     columns: usize,
     tile_width: usize,
@@ -114,6 +112,7 @@ impl LevelMap {
         let mut map = None;
         let mut level_start = None;
         let mut level_boundary = None;
+        let mut static_boundaries = Vec::new();
 
         for layer in layers {
             match layer {
@@ -162,8 +161,8 @@ impl LevelMap {
                 Layer::ObjectGroup {name, objects, ..} => {
                     assert_eq!(name, "markers");
 
-                    for &Object {ref name, x, y, width, height, rotation, point, ..} in objects {
-                        match name.as_str() {
+                    for &Object {ref type_, x, y, width, height, rotation, point, ref polyline, ..} in objects {
+                        match type_.as_str() {
                             "level_start" => {
                                 assert!(point);
                                 // Must not be rotated
@@ -185,7 +184,18 @@ impl LevelMap {
                                     height as u32,
                                 ));
                             },
-                            _ => unreachable!("Unrecognized object name in markers layer: {}", name),
+                            "static_boundary" => {
+                                assert!(!point);
+                                // Must not be rotated
+                                assert!(rotation < ::std::f64::EPSILON);
+
+                                let offset = Point2::new(x, y);
+                                let boundary_line = polyline.iter()
+                                    .map(|&Coordinate {x, y}| Point2::new(x + offset.x, y + offset.y))
+                                    .collect();
+                                static_boundaries.push(boundary_line);
+                            },
+                            _ => unreachable!("Unrecognized object type in markers layer: {}", type_),
                         }
                     }
                 },
@@ -195,6 +205,7 @@ impl LevelMap {
         Ok(Self {
             level_start: level_start.unwrap(),
             level_boundary: level_boundary.unwrap(),
+            static_boundaries,
             rows: rows as usize,
             columns: columns as usize,
             tile_width: tile_width as usize,
@@ -223,6 +234,10 @@ impl LevelMap {
         self.level_boundary
     }
 
+    pub fn static_boundaries(&self) -> &[Vec<Point2<f64>>] {
+        &self.static_boundaries
+    }
+
     pub fn background_within(&self, bounds: Rect) -> impl Iterator<Item=&Tile> {
         self.background.slice_within(self.tile_width, self.tile_height, bounds)
     }
@@ -233,9 +248,5 @@ impl LevelMap {
 
     pub fn map_within(&self, bounds: Rect) -> impl Iterator<Item=&Tile> {
         self.map.slice_within(self.tile_width, self.tile_height, bounds)
-    }
-
-    pub fn iter_map_tiles(&self) -> impl Iterator<Item=&Tile> {
-        self.map.iter_tiles()
     }
 }

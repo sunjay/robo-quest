@@ -2,7 +2,7 @@ use std::collections::HashMap;
 
 use sdl2::rect::Rect;
 use specs::{Entity, System, Join, ReadExpect, ReadStorage, WriteStorage, Entities};
-use nalgebra::{self as na, Isometry2};
+use nalgebra::{self as na, Isometry2, Point2};
 use nphysics2d::{
     solver::SignoriniCoulombPyramidModel,
     object::{BodyHandle, ColliderHandle, Material},
@@ -10,11 +10,12 @@ use nphysics2d::{
     volumetric::Volumetric,
     world::World,
 };
-use ncollide2d::shape::{Cuboid, ShapeHandle};
+use ncollide2d::shape::{Cuboid, Polyline, ShapeHandle, Shape};
 
 use components::{Position, Velocity, BoundingBox, Density, AppliedAcceleration};
 use resources::FramesElapsed;
 use math::{Vec2D, ToVec2D, ToPoint};
+use map::LevelMap;
 
 const COLLIDER_MARGIN: f64 = 0.01;
 
@@ -48,31 +49,50 @@ pub struct Physics {
 impl Physics {
     pub const GRAVITY_ACCEL: f64 = 150.0; // pixels / frame^2
 
-    pub fn new(fps: f64) -> Self {
+    pub fn new(fps: f64, map: &LevelMap) -> Self {
         let mut world = World::new();
         world.set_contact_model(SignoriniCoulombPyramidModel::new());
         world.set_gravity(Vec2D::y() * Self::GRAVITY_ACCEL);
         world.set_timestep(1.0/fps);
-        Self {
+
+        let mut physics = Self {
             world,
             bodies: Default::default(),
+        };
+
+        for static_boundary in map.static_boundaries() {
+            //TODO: Load friction from map file
+            physics.add_static_polyline(static_boundary, 0.5);
         }
+
+        physics
     }
 
     fn add_static_rect(&mut self, entity: Entity, rect: Rect, friction: f64) {
+        let shape = Cuboid::new(Vec2D::new(
+            rect.width() as f64 / 2.0 - COLLIDER_MARGIN,
+            rect.height() as f64 / 2.0 - COLLIDER_MARGIN,
+        ));
+        let collider_handle = self.add_static_shape(shape, rect.center().to_vec2d(), friction);
+        let body = Body::StaticCollider(collider_handle);
+        self.insert_body(entity, body);
+    }
+
+    fn add_static_polyline(&mut self, points: &[Point2<f64>], friction: f64) {
+        let shape = Polyline::new(points.to_vec());
+        self.add_static_shape(shape, Vec2D::zeros(), friction);
+    }
+
+    fn add_static_shape(&mut self, shape: impl Shape<f64>, center: Vec2D, friction: f64) -> ColliderHandle {
         assert!(friction >= 0.0 && friction <= 1.0, "Friction must be between 0.0 and 1.0");
 
-        let body = Body::StaticCollider(self.world.add_collider(
+        self.world.add_collider(
             COLLIDER_MARGIN,
-            ShapeHandle::new(Cuboid::new(Vec2D::new(
-                rect.width() as f64 / 2.0 - COLLIDER_MARGIN,
-                rect.height() as f64 / 2.0 - COLLIDER_MARGIN,
-            ))),
+            ShapeHandle::new(shape),
             BodyHandle::ground(),
-            Isometry2::new(rect.center().to_vec2d(), na::zero()),
+            Isometry2::new(center, na::zero()),
             Material::new(friction, friction / 2.0),
-        ));
-        self.insert_body(entity, body);
+        )
     }
 
     fn add_rigid_body(&mut self, entity: Entity, rect: Rect, density: f64, friction: f64) -> BodyHandle {

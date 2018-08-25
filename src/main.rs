@@ -36,7 +36,7 @@ use std::{
 use sdl2::{
     event::Event,
     keyboard::Keycode,
-    rect::{Rect, Point},
+    rect::Rect,
 };
 use specs::{
     Builder,
@@ -58,7 +58,7 @@ use components::{
 use resources::{FramesElapsed, GameKeys};
 use texture_manager::TextureManager;
 use renderer::Renderer;
-use map::{LevelMap, Tile};
+use map::LevelMap;
 use math::Vec2D;
 
 fn main() -> Result<(), String> {
@@ -79,7 +79,7 @@ fn main() -> Result<(), String> {
 
     let mut dispatcher = DispatcherBuilder::new()
         .with(systems::Keyboard, "Keyboard", &[])
-        .with(systems::Physics::new(fps), "Physics", &["Keyboard"])
+        .with(systems::Physics::new(fps, &level_map), "Physics", &["Keyboard"])
         .with(systems::Animator, "Animator", &["Physics"])
         .build();
     dispatcher.setup(&mut world.res);
@@ -114,13 +114,6 @@ fn main() -> Result<(), String> {
             frame_counter: 0,
         })
         .build();
-
-    for &Tile {x, y, image_width, image_height, ..} in level_map.iter_map_tiles() {
-        world.create_entity()
-            .with(Position(Point::new(x + image_width as i32 / 2, y + image_height as i32 / 2)))
-            .with(BoundingBox { width: image_width, height: image_height })
-            .build();
-    }
 
     let mut timer = renderer.timer()?;
 

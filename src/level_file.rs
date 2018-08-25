@@ -129,10 +129,19 @@ pub struct Object {
     #[serde(default)]
     #[serde(skip_serializing_if = "is_false")]
     pub point: bool,
+    #[serde(default)]
+    #[serde(skip_serializing_if = "Vec::is_empty")]
+    pub polyline: Vec<Coordinate>,
     pub visible: bool,
 }
 
 fn is_false(x: &bool) -> bool { !x }
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct Coordinate {
+    pub x: f64,
+    pub y: f64,
+}
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct TileSet {
