@@ -1,4 +1,5 @@
 use std::env;
+use std::cmp;
 
 use sdl2::{
     self,
@@ -107,17 +108,27 @@ impl Renderer {
         assert!(camera_focuses.next().is_none(),
             "Renderer was asked to focus on more than one thing");
 
-        // Put the camera focus position in the center of the screen
         let (screen_width, screen_height) = self.dimensions();
-        let screen = Rect::from_center(camera_focus, screen_width, screen_height);
+        let screen_center = Point::new(screen_width as i32 / 2, screen_height as i32 / 2);
 
         // The position on the map of the screen's top left corner
         // Adding this point to the position of the camera_focus would make it render in the center
         // of the screen
-        let render_center = camera_focus.offset(
-            -(screen_width as i32 / 2),
-            -(screen_height as i32 / 2),
+        let render_center = camera_focus - screen_center;
+
+        // Need to make sure the camera stays within the level boundary
+        let level_boundary = map.level_boundary();
+        // The valid ranges for the top-left corner of the screen
+        let (min_x, max_x) = (0, level_boundary.x() + level_boundary.width() as i32 - screen_width as i32);
+        let (min_y, max_y) = (0, level_boundary.y() + level_boundary.height() as i32 - screen_height as i32);
+        let clamp = |min, x, max| cmp::min(cmp::max(min, x), max);
+        let render_center = Point::new(
+            clamp(min_x, render_center.x, max_x),
+            clamp(min_y, render_center.y, max_y),
         );
+
+        // Get the tiles surrounding the camera focus
+        let screen = Rect::from_center(render_center + screen_center, screen_width, screen_height);
 
         self.render_tiles(map.background_within(screen), render_center, textures)?;
         self.render_tiles(map.background_items_within(screen), render_center, textures)?;
