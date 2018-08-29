@@ -1,15 +1,31 @@
 # robo-quest
 
-This game is written to explicitly target the
-[GameShell](https://www.clockworkpi.com/).
+This is a game written in the [Rust programming language][rust-lang] to
+explicitly target the [GameShell](https://www.clockworkpi.com/), a small GameBoy
+sized Linux computer. The game centers around a small robot protagonist who
+wakes up in an unknown land and stumbles onto an invasion that it was originally
+meant to be part of. The robot must make a choice to either join the invasion
+and fulfill its original programming or turn against the other robots and help
+the human resistance.
 
-## Usage
+![robo quest](./assets/screenshot.png)
+
+This game is still in very early development. Everything, including the name of
+the game, is subject to change.
+
+[rust-lang]: https://www.rust-lang.org
+
+## Running The Game
+
+Visit [rustup.rs] to install the Rust compiler and Cargo.
 
 Use `DISPLAY_SCALE=n` for some `n >= 1` to make seeing the game easier.
 
 ```bash
 $ DISPLAY_SCALE=2 cargo run
 ```
+
+[rustup.rs]: https://rustup.rs/
 
 ## Story
 
