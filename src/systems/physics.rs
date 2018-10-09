@@ -10,9 +10,13 @@ use nphysics2d::{
     volumetric::Volumetric,
     world::World,
 };
-use ncollide2d::shape::{Cuboid, Polyline, ShapeHandle, Shape};
+use ncollide2d::{
+    events::ProximityEvent,
+    query::Proximity,
+    shape::{Cuboid, Polyline, ShapeHandle, Shape},
+};
 
-use components::{Position, Velocity, BoundingBox, Density, AppliedAcceleration};
+use components::{Position, Velocity, Collisons, BoundingBox, Density, AppliedAcceleration};
 use resources::FramesElapsed;
 use math::{Vec2D, ToVec2D, ToPoint};
 use map::LevelMap;
@@ -39,11 +43,25 @@ pub struct PhysicsData<'a> {
     applied_accel: ReadStorage<'a, AppliedAcceleration>,
     positions: WriteStorage<'a, Position>,
     velocities: WriteStorage<'a, Velocity>,
+    collisions: WriteStorage<'a, Collisons>,
+}
+
+#[derive(Debug, Clone, Copy)]
+enum SensorDirection {
+    Top,
+    Left,
+    Right,
+    Bottom,
 }
 
 pub struct Physics {
     world: World<f64>,
+    /// Lookup table for entities kept in the physics engine. Needed for keeping track of which
+    /// entities have been added and which have not beed added.
     bodies: HashMap<Entity, Body>,
+    /// Lookup table for entities based on the sensor ColliderHandle. Needed for when sensor
+    /// collisions are detected.
+    sensors: HashMap<ColliderHandle, (Entity, SensorDirection)>,
 }
 
 impl Physics {
@@ -58,6 +76,7 @@ impl Physics {
         let mut physics = Self {
             world,
             bodies: Default::default(),
+            sensors: Default::default(),
         };
 
         for static_boundary in map.static_boundaries() {
@@ -107,6 +126,7 @@ impl Physics {
             geom.inertia(density),
             geom.center_of_mass(),
         );
+
         let body = Body::RigidBody {
             body_handle,
             collider_handle: self.world.add_collider(
@@ -125,6 +145,31 @@ impl Physics {
         self.bodies.insert(entity, body)
             .map(|_| unreachable!("an entity was added to the physics engine more than once"));
     }
+
+    /// Adds a sensor to the given body and registers that it results in the given entity touching
+    /// something in the given direction
+    fn insert_sensor(
+        &mut self,
+        entity: Entity,
+        body_handle: BodyHandle,
+        direction: SensorDirection,
+        offset_x: f64,
+        offset_y: f64,
+        width: f64,
+        height: f64,
+    ) {
+        let sensor_geom = ShapeHandle::new(Cuboid::new(Vec2D::new(
+            width / 2.0,
+            height / 2.0,
+        )));
+        let collider_handle = self.world.add_sensor(
+            sensor_geom,
+            body_handle,
+            Isometry2::new(Vec2D::new(offset_x, offset_y), na::zero()),
+        );
+        self.sensors.insert(collider_handle, (entity, direction))
+            .map(|_| unreachable!("collider handle should have been unique in the physics engine"));
+    }
 }
 
 impl<'a> System<'a> for Physics {
@@ -139,6 +184,7 @@ impl<'a> System<'a> for Physics {
             applied_accel,
             mut positions,
             mut velocities,
+            mut collisions,
         } = data;
         let FramesElapsed(frames_elapsed) = *frames;
 
@@ -161,11 +207,58 @@ impl<'a> System<'a> for Physics {
                         0.0,
                     );
 
-                    let vel = velocities.get(entity);
-                    if let Some(&Velocity(vel)) = vel {
+                    if let Some(&Velocity(vel)) = velocities.get(entity) {
                         self.world.rigid_body_mut(body_handle)
                             .expect("Body handle did not map to a rigid body")
                             .set_linear_velocity(vel);
+                    }
+
+                    // If this entity will need to detect collisions, attach sensors to it
+                    if let Some(&Collisons {..}) = collisions.get(entity) {
+                        let width = width as f64;
+                        let height = height as f64;
+                        let sensor_size = 2.0;
+                        // Sensor needs to be a little narrower so that it doesn't falsely detect
+                        // collisions on the corners of the bounding box
+                        let sensor_scale_factor = 0.8;
+
+                        // Positions each sensor at its position around the entity
+                        self.insert_sensor(
+                            entity,
+                            body_handle,
+                            SensorDirection::Top,
+                            0.0,
+                            -(height / 2.0 - sensor_size / 2.0),
+                            width * sensor_scale_factor,
+                            sensor_size,
+                        );
+                        self.insert_sensor(
+                            entity,
+                            body_handle,
+                            SensorDirection::Bottom,
+                            0.0,
+                            height / 2.0 + sensor_size / 2.0,
+                            width * sensor_scale_factor,
+                            sensor_size,
+                        );
+                        self.insert_sensor(
+                            entity,
+                            body_handle,
+                            SensorDirection::Left,
+                            -(width / 2.0 + sensor_size / 2.0),
+                            0.0,
+                            sensor_size,
+                            height * sensor_scale_factor,
+                        );
+                        self.insert_sensor(
+                            entity,
+                            body_handle,
+                            SensorDirection::Right,
+                            width / 2.0 - sensor_size / 2.0,
+                            0.0,
+                            sensor_size,
+                            height * sensor_scale_factor,
+                        );
                     }
                 },
                 // Static collider
@@ -201,19 +294,39 @@ impl<'a> System<'a> for Physics {
             self.world.remove_force_generator(force_handle);
         }
 
+        // Handle sensor events to determine which collisions have occurred
+        for ProximityEvent {collider1, collider2, new_status, ..} in self.world.proximity_events() {
+            for sensor in &[self.sensors.get(collider1), self.sensors.get(collider2)] {
+                if let Some(&(entity, direction)) = sensor {
+                    let collisions = collisions.get_mut(entity)
+                        .expect("Body with sensors should have a Collisons component");
+                    let status = match new_status {
+                        Proximity::WithinMargin | Proximity::Intersecting => true,
+                        Proximity::Disjoint => false,
+                    };
+                    match direction {
+                        SensorDirection::Top => collisions.top = status,
+                        SensorDirection::Left => collisions.left = status,
+                        SensorDirection::Right => collisions.right = status,
+                        SensorDirection::Bottom => collisions.bottom = status,
+                    }
+                }
+            }
+        }
+
         // Update every tracked entity with the latest values from the physics engine
         // We don't need to update static colliders because they do not move
         for (&entity, body) in self.bodies.iter() {
             if let &Body::RigidBody {body_handle, ..} = body {
-                let position = positions.get_mut(entity)
+                let Position(position) = positions.get_mut(entity)
                     .expect("Rigid body should have had a position");
-                let velocity = velocities.get_mut(entity)
+                let Velocity(velocity) = velocities.get_mut(entity)
                     .expect("Rigid body should have had a velocity");
 
                 let physics_body = self.world.rigid_body(body_handle)
                     .expect("Body handle did not map to a rigid body");
-                position.0 = physics_body.position().translation.vector.to_point();
-                velocity.0 = physics_body.velocity().linear;
+                *position = physics_body.position().translation.vector.to_point();
+                *velocity = physics_body.velocity().linear;
             }
         }
     }

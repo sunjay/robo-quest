@@ -49,8 +49,18 @@ pub struct Velocity(pub Vec2D);
 /// Keep in mind that the coordinate system has +x to the right and +y downwards.
 /// Unit: pixels / frame^2
 #[derive(Debug, Component)]
-#[storage(VecStorage)]
+#[storage(HashMapStorage)]
 pub struct AppliedAcceleration(pub Vec2D);
+
+/// Whether anything is touching a given entity in any of the cardinal directions
+#[derive(Debug, Default, Component)]
+#[storage(HashMapStorage)]
+pub struct Collisons {
+    pub top: bool,
+    pub left: bool,
+    pub right: bool,
+    pub bottom: bool,
+}
 
 /// The keyboard controlled player. Only one entity should hold this at a given time.
 #[derive(Debug, Default, Component)]

@@ -54,6 +54,7 @@ use components::{
     KeyboardControlled,
     CameraFocus,
     MovementAnimation,
+    Collisons,
 };
 use resources::{FramesElapsed, GameKeys};
 use texture_manager::TextureManager;
@@ -101,6 +102,7 @@ fn main() -> Result<(), String> {
         .with(Position(robot_center))
         .with(Density(1000.0))
         .with(BoundingBox {width: 32, height: 30})
+        .with(Collisons::default())
         .with(Velocity(Vec2D::zeros()))
         .with(AppliedAcceleration(Vec2D::zeros()))
         .with(Sprite {

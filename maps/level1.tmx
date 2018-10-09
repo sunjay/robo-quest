@@ -1633,7 +1633,7 @@
 </data>
  </layer>
  <objectgroup name="markers">
-  <object id="1" name="level_start" type="level_start" x="180" y="440">
+  <object id="1" name="level_start" type="level_start" x="180" y="430">
    <point/>
   </object>
   <object id="4" name="level_boundary" type="level_boundary" x="140" y="0" width="1880" height="640"/>
