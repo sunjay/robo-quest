@@ -79,7 +79,7 @@ fn main() -> Result<(), String> {
     world.add_resource(level_map.clone());
 
     let mut dispatcher = DispatcherBuilder::new()
-        .with(systems::Keyboard, "Keyboard", &[])
+        .with(systems::Keyboard::default(), "Keyboard", &[])
         .with(systems::Physics::new(fps, &level_map), "Physics", &["Keyboard"])
         .with(systems::Animator, "Animator", &["Physics"])
         .build();
